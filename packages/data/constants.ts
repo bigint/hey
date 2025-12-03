@@ -1,4 +1,7 @@
+import { chains } from "@lens-chain/sdk/viem";
 import { CONTRACTS } from "./contracts";
+
+export const CHAIN = chains.mainnet;
 
 // Lens and Hey Env Config
 export const LENS_API_URL = "https://api.lens.xyz/graphql";

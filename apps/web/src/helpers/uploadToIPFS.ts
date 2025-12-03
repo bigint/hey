@@ -1,5 +1,5 @@
+import { CHAIN } from "@hey/data/constants";
 import { immutable } from "@lens-chain/storage-client";
-import { mainnet } from "viem/chains";
 import { storageClient } from "./storageClient";
 
 interface UploadResult {
@@ -18,7 +18,7 @@ const uploadToIPFS = async (
     const attachments = await Promise.all(
       files.map(async (file: File) => {
         const storageNodeResponse = await storageClient.uploadFile(file, {
-          acl: immutable(mainnet.id)
+          acl: immutable(CHAIN.id)
         });
 
         return {

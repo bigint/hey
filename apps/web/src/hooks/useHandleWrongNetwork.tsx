@@ -1,5 +1,5 @@
+import { CHAIN } from "@hey/data/constants";
 import logger from "@hey/helpers/logger";
-import { mainnet } from "viem/chains";
 import { useConnections, useSwitchChain } from "wagmi";
 
 interface HandleWrongNetworkParams {
@@ -12,7 +12,7 @@ const useHandleWrongNetwork = () => {
   const isConnected = () => activeConnection[0] !== undefined;
 
   const handleWrongNetwork = async (params?: HandleWrongNetworkParams) => {
-    const chainId = params?.chainId ?? mainnet.id;
+    const chainId = params?.chainId ?? CHAIN.id;
 
     const isWrongNetwork = () => activeConnection[0]?.chainId !== chainId;
 
