@@ -13,7 +13,8 @@ const plugins: PluggableList = [
   [stripMarkdown, { keep: ["strong", "emphasis", "list", "listItem"] }],
   remarkBreaks,
   linkifyRegex(Regex.url),
-  linkifyRegex(Regex.mention)
+  linkifyRegex(Regex.accountMention),
+  linkifyRegex(Regex.groupMention)
 ];
 
 interface MarkupProps {

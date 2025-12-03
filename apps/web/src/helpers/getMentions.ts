@@ -4,7 +4,7 @@ import type { AccountMentionFragment, PostMentionFragment } from "@hey/indexer";
 const getMentions = (text: string): PostMentionFragment[] => {
   if (!text) return [];
 
-  const mentions = text.match(Regex.mention) ?? [];
+  const mentions = text.match(Regex.accountMention) ?? [];
 
   return mentions.map((mention) => {
     const handle = mention
