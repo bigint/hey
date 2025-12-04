@@ -1,5 +1,6 @@
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
+import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
@@ -19,6 +20,7 @@ export const markdownFromHTML = (html: string): string => {
     .use(rehypeParse)
     .use(rehypeJoinParagraph)
     .use(rehypeRemark, { newlines: true })
+    .use(remarkGfm)
     .use(remarkLinkProtocol)
     .use(remarkStringify, {
       handlers: { break: customBreakHandler, hardBreak: customBreakHandler }
@@ -32,6 +34,7 @@ export const markdownFromHTML = (html: string): string => {
 export const htmlFromMarkdown = (markdown: string): string => {
   return unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkHtml)
     .processSync(markdown)
     .toString();

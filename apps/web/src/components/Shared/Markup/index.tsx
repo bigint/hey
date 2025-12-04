@@ -4,14 +4,19 @@ import type { PostMentionFragment } from "@hey/indexer";
 import { memo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
 import linkifyRegex from "remark-linkify-regex";
 import stripMarkdown from "strip-markdown";
 import type { PluggableList } from "unified";
 import MarkupLink from "./MarkupLink";
 
 const plugins: PluggableList = [
-  [stripMarkdown, { keep: ["strong", "emphasis", "list", "listItem"] }],
+  [
+    stripMarkdown,
+    { keep: ["strong", "emphasis", "list", "listItem", "delete"] }
+  ],
   remarkBreaks,
+  remarkGfm,
   linkifyRegex(Regex.url),
   linkifyRegex(Regex.mention)
 ];

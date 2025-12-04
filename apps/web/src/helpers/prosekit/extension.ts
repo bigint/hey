@@ -15,6 +15,7 @@ import { defineMentionCommands } from "prosekit/extensions/mention";
 import { defineModClickPrevention } from "prosekit/extensions/mod-click-prevention";
 import { defineParagraph } from "prosekit/extensions/paragraph";
 import { definePlaceholder } from "prosekit/extensions/placeholder";
+import { defineStrike } from "prosekit/extensions/strike";
 import { defineText } from "prosekit/extensions/text";
 import { defineVirtualSelection } from "prosekit/extensions/virtual-selection";
 
@@ -80,6 +81,7 @@ export const defineEditorExtension = () => {
     defineBaseCommands(),
     defineItalic(),
     defineBold(),
+    defineStrike(),
     defineAutoLink(),
     defineVirtualSelection(),
     defineMention(),
