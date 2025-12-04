@@ -13,7 +13,7 @@ export type MentionAccount = {
   subscribed: boolean;
 };
 
-const useMentionQuery = (query: string): MentionAccount[] => {
+const useAccountMentionQuery = (query: string): MentionAccount[] => {
   const [results, setResults] = useState<MentionAccount[]>([]);
   const [searchAccounts] = useAccountsLazyQuery();
 
@@ -57,4 +57,4 @@ const useMentionQuery = (query: string): MentionAccount[] => {
   return results;
 };
 
-export default useMentionQuery;
+export default useAccountMentionQuery;

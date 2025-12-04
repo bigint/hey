@@ -10,8 +10,8 @@ import { useState } from "react";
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import type { EditorExtension } from "@/helpers/prosekit/extension";
-import type { MentionAccount } from "@/hooks/prosekit/useMentionQuery";
-import useMentionQuery from "@/hooks/prosekit/useMentionQuery";
+import type { MentionAccount } from "@/hooks/prosekit/useAccountMentionQuery";
+import useAccountMentionQuery from "@/hooks/prosekit/useAccountMentionQuery";
 
 interface MentionItemProps {
   onSelect: VoidFunction;
@@ -24,6 +24,7 @@ const MentionItem = ({ onSelect, account }: MentionItemProps) => {
       <AutocompleteItem
         className="focusable-dropdown-item m-1.5 flex cursor-pointer items-center space-x-2 rounded-lg px-3 py-1 dark:text-white"
         onSelect={onSelect}
+        value={account.address}
       >
         <Image
           alt={account.username}
@@ -48,10 +49,10 @@ const MentionItem = ({ onSelect, account }: MentionItemProps) => {
   );
 };
 
-const MentionPicker = () => {
+const AccountMentionPicker = () => {
   const editor = useEditor<EditorExtension>();
   const [queryString, setQueryString] = useState<string>("");
-  const results = useMentionQuery(queryString);
+  const results = useAccountMentionQuery(queryString);
 
   const handleAccountInsert = (account: MentionAccount) => {
     editor.commands.insertMention({
@@ -70,7 +71,7 @@ const MentionPicker = () => {
       )}
       offset={10}
       onQueryChange={setQueryString}
-      regex={EditorRegex.mention}
+      regex={EditorRegex.accountMention}
     >
       <AutocompleteList
         className="divide-y divide-gray-200 dark:divide-gray-700"
@@ -88,4 +89,4 @@ const MentionPicker = () => {
   );
 };
 
-export default MentionPicker;
+export default AccountMentionPicker;

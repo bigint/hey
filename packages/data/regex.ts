@@ -27,6 +27,7 @@ export const Regex = {
 };
 
 export const EditorRegex = {
+  accountMention: new RegExp(`${MATCH_BEHIND}@${EDITOR_MENTION}$`, "g"),
   emoji: new RegExp(`${MATCH_BEHIND}:\\w*$`, "g"),
-  mention: new RegExp(`${MATCH_BEHIND}@${EDITOR_MENTION}$`, "g")
+  groupMention: new RegExp(`${MATCH_BEHIND}#${EDITOR_MENTION}$`, "g")
 };

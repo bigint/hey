@@ -95,7 +95,8 @@
     }
 
     & a,
-    span[data-mention="account"] {
+    span[data-mention="account"],
+    span[data-mention="group"] {
       @apply text-brand-500;
     }
 
