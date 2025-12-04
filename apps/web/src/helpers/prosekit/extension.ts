@@ -46,13 +46,18 @@ const defineMentionSpec = () => {
       const value = attrs.value.toString();
 
       const children =
-        attrs.kind === "account"
+        attrs.kind === "group"
           ? [
-              ["span", "@"],
-              ["span", { class: "hidden" }, LENS_NAMESPACE],
+              ["span", "#"],
               ["span", value]
             ]
-          : [["span", value]];
+          : attrs.kind === "account"
+            ? [
+                ["span", "@"],
+                ["span", { class: "hidden" }, LENS_NAMESPACE],
+                ["span", value]
+              ]
+            : [["span", value]];
 
       return [
         "span",

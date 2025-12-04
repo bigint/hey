@@ -7,7 +7,7 @@ const MarkupLink = ({ mentions, title }: MarkupLinkProps) => {
     return null;
   }
 
-  if (title.startsWith("@")) {
+  if (title.startsWith("@") || title.startsWith("#")) {
     return <Mention mentions={mentions} title={title} />;
   }
 
