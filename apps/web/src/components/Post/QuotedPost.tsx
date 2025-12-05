@@ -2,10 +2,7 @@ import type { PostFragment } from "@hey/indexer";
 import { memo } from "react";
 import PostWarning from "@/components/Shared/Post/PostWarning";
 import PostWrapper from "@/components/Shared/Post/PostWrapper";
-import {
-  getBlockedByMeMessage,
-  getBlockedMeMessage
-} from "@/helpers/getBlockedMessage";
+import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";
 import PostBody from "./PostBody";
@@ -18,11 +15,6 @@ interface QuotedPostProps {
 
 const QuotedPost = ({ isNew = false, post }: QuotedPostProps) => {
   const isBlockededByMe = post.author.operations?.isBlockedByMe;
-  const hasBlockedMe = post.author.operations?.hasBlockedMe;
-
-  if (hasBlockedMe) {
-    return <PostWarning message={getBlockedMeMessage(post.author)} />;
-  }
 
   if (isBlockededByMe) {
     return <PostWarning message={getBlockedByMeMessage(post.author)} />;

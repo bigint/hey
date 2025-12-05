@@ -12,10 +12,7 @@ import Custom500 from "@/components/Shared/500";
 import Cover from "@/components/Shared/Cover";
 import PageLayout from "@/components/Shared/PageLayout";
 import { EmptyState } from "@/components/Shared/UI";
-import {
-  getBlockedByMeMessage,
-  getBlockedMeMessage
-} from "@/helpers/getBlockedMessage";
+import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
 import { useAccountLinkStore } from "@/store/non-persisted/navigation/useAccountLinkStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import AccountFeed from "./AccountFeed";
@@ -68,7 +65,6 @@ const ViewAccount = () => {
 
   const isDeleted = isAccountDeleted(account);
   const isBlockedByMe = account?.operations?.isBlockedByMe;
-  const hasBlockedMe = account?.operations?.hasBlockedMe;
 
   const accountInfo = getAccount(account);
 
@@ -89,9 +85,7 @@ const ViewAccount = () => {
       ? "Account Deleted"
       : isBlockedByMe
         ? getBlockedByMeMessage(account)
-        : hasBlockedMe
-          ? getBlockedMeMessage(account)
-          : null;
+        : null;
 
     return (
       <EmptyState
@@ -113,7 +107,7 @@ const ViewAccount = () => {
         }
       />
       {renderAccountDetails()}
-      {isDeleted || isBlockedByMe || hasBlockedMe ? (
+      {isDeleted || isBlockedByMe ? (
         renderEmptyState()
       ) : (
         <>

@@ -5,10 +5,7 @@ import dayjs from "dayjs";
 import PostWarning from "@/components/Shared/Post/PostWarning";
 import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
-import {
-  getBlockedByMeMessage,
-  getBlockedMeMessage
-} from "@/helpers/getBlockedMessage";
+import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
 import { useHiddenCommentFeedStore } from ".";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";
@@ -31,11 +28,6 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   const { timestamp } = targetPost;
 
   const isBlockedByMe = post.author.operations?.isBlockedByMe;
-  const hasBlockedMe = post.author.operations?.hasBlockedMe;
-
-  if (hasBlockedMe) {
-    return <PostWarning message={getBlockedMeMessage(post.author)} />;
-  }
 
   if (isBlockedByMe) {
     return <PostWarning message={getBlockedByMeMessage(post.author)} />;

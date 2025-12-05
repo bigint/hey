@@ -12,6 +12,3 @@ const formatMessage = (
 
 export const getBlockedByMeMessage = (account: AccountFragment): string =>
   formatMessage(account, (username) => `You have blocked ${username}`);
-
-export const getBlockedMeMessage = (account: AccountFragment): string =>
-  formatMessage(account, (username) => `${username} has blocked you`);
