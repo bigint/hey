@@ -54,7 +54,7 @@ const Details = ({
     attribute: "location" | "website" | "x",
     icon: ReactNode
   ) => {
-    if (isBlockedByMe || hasBlockedMe) return null;
+    if (isBlockedByMe) return null;
 
     const value = getAccountAttribute(attribute, account?.metadata?.attributes);
     if (!value) return null;
@@ -142,7 +142,7 @@ const Details = ({
           ) : null}
         </div>
       </div>
-      {!isBlockedByMe && !hasBlockedMe && account?.metadata?.bio ? (
+      {!isBlockedByMe && account?.metadata?.bio ? (
         <div className="markup linkify">
           <Markup mentions={getMentions(account?.metadata.bio)}>
             {account?.metadata.bio}
@@ -151,9 +151,7 @@ const Details = ({
       ) : null}
       <div className="space-y-5">
         <Followerings account={account} />
-        {!isBlockedByMe &&
-        !hasBlockedMe &&
-        currentAccount?.address !== account.address ? (
+        {!isBlockedByMe && currentAccount?.address !== account.address ? (
           <FollowersYouKnowOverview
             address={account.address}
             username={getAccount(account).username}
@@ -161,7 +159,6 @@ const Details = ({
         ) : null}
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           {!isBlockedByMe &&
-            !hasBlockedMe &&
             getAccountAttribute("location", account?.metadata?.attributes) && (
               <MetaDetails icon={<MapPinIcon className="size-4" />}>
                 {getAccountAttribute("location", account?.metadata?.attributes)}

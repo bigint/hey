@@ -42,7 +42,6 @@ const Timeline = () => {
     () =>
       (feed ?? []).filter(
         (timelineItem) =>
-          !timelineItem.primary.author.operations?.hasBlockedMe &&
           !timelineItem.primary.author.operations?.isBlockedByMe &&
           !timelineItem.primary.operations?.hasReported
       ),

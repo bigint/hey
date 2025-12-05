@@ -35,11 +35,7 @@ const useAccountMentionQuery = (query: string): MentionAccount[] => {
       const accountsSearchResult = search;
       const accounts = accountsSearchResult?.items;
       const accountsResults = (accounts ?? [])
-        .filter(
-          (account) =>
-            !account.operations?.isBlockedByMe &&
-            !account.operations?.hasBlockedMe
-        )
+        .filter((account) => !account.operations?.isBlockedByMe)
         .map(
           (account): MentionAccount => ({
             address: account.address,
