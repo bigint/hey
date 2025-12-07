@@ -6,6 +6,7 @@ import Sidebar from "@/components/Shared/Sidebar";
 import { EmptyState } from "@/components/Shared/UI";
 import Accounts from "./Accounts";
 import FeedType, { SearchTabFocus } from "./FeedType";
+import Groups from "./Groups";
 import Posts from "./Posts";
 
 const Search = () => {
@@ -16,7 +17,8 @@ const Search = () => {
 
   const lowerCaseFeedType = [
     SearchTabFocus.Accounts.toLowerCase(),
-    SearchTabFocus.Posts.toLowerCase()
+    SearchTabFocus.Posts.toLowerCase(),
+    SearchTabFocus.Groups.toLowerCase()
   ];
 
   const getFeedType = (type: string | undefined) => {
@@ -36,7 +38,7 @@ const Search = () => {
       {!q && (
         <EmptyState
           icon={<MagnifyingGlassIcon className="size-8" />}
-          message="Search for accounts or posts"
+          message="Search for accounts, posts, or groups"
         />
       )}
       {q && feedType === SearchTabFocus.Accounts ? (
@@ -44,6 +46,9 @@ const Search = () => {
       ) : null}
       {q && feedType === SearchTabFocus.Posts ? (
         <Posts query={q as string} />
+      ) : null}
+      {q && feedType === SearchTabFocus.Groups ? (
+        <Groups query={q as string} />
       ) : null}
     </PageLayout>
   );

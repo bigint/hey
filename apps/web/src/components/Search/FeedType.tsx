@@ -3,7 +3,8 @@ import { Tabs } from "@/components/Shared/UI";
 
 export enum SearchTabFocus {
   Accounts = "ACCOUNTS",
-  Posts = "POSTS"
+  Posts = "POSTS",
+  Groups = "GROUPS"
 }
 
 interface FeedTypeProps {
@@ -15,7 +16,8 @@ const FeedType = ({ feedType }: FeedTypeProps) => {
 
   const tabs = [
     { name: "Accounts", type: SearchTabFocus.Accounts },
-    { name: "Posts", type: SearchTabFocus.Posts }
+    { name: "Posts", type: SearchTabFocus.Posts },
+    { name: "Groups", type: SearchTabFocus.Groups }
   ];
 
   const updateQuery = (type?: string) => {
