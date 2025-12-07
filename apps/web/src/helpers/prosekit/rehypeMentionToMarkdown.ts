@@ -1,4 +1,5 @@
-import { Root } from "hast";
+import type { Root } from "hast";
+import { visitParents } from "unist-util-visit-parents";
 
 /**
  * Rehype plugin to convert group mention elements to evm addresses.
@@ -7,23 +8,16 @@ import { Root } from "hast";
  */
 export function rehypeMentionToMarkdown() {
   return (tree: Root) => {
-    const visit = (node: any) => {
+    visitParents(tree, "element", (node: any) => {
       if (
-        node.type === "element" &&
         node.tagName === "span" &&
-        node.properties
+        node.properties &&
+        node.properties.dataMention === "group" &&
+        node.properties.dataId
       ) {
-        if (node.properties.dataMention === "group" && node.properties.dataId) {
-          const dataId = String(node.properties.dataId);
-          node.children = [{ type: "text", value: `#${dataId}` }];
-        }
+        const dataId = String(node.properties.dataId);
+        node.children = [{ type: "text", value: `#${dataId}` }];
       }
-
-      if (node.children && Array.isArray(node.children)) {
-        node.children.forEach(visit);
-      }
-    };
-
-    visit(tree);
+    });
   };
 }
