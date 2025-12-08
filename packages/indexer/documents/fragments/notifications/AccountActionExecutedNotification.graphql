@@ -5,6 +5,9 @@ fragment AccountActionExecutedNotification on AccountActionExecutedNotification 
       executedBy {
         ...Account
       }
+      tipAmount {
+        ...PayableAmount
+      }
     }
   }
 }

@@ -51,8 +51,11 @@ const List = ({ feedType }: ListProps) => {
         return [NotificationType.Commented];
       case NotificationFeedType.Likes:
         return [NotificationType.Reacted];
-      case NotificationFeedType.PostActions:
-        return [NotificationType.ExecutedPostAction];
+      case NotificationFeedType.Actions:
+        return [
+          NotificationType.ExecutedPostAction,
+          NotificationType.ExecutedAccountAction
+        ];
       case NotificationFeedType.Rewards:
         return [NotificationType.TokenDistributed];
       default:

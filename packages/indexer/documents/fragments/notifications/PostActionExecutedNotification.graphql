@@ -15,6 +15,9 @@ fragment PostActionExecutedNotification on PostActionExecutedNotification {
       executedBy {
         ...Account
       }
+      tipAmount {
+        ...PayableAmount
+      }
     }
   }
   post {
