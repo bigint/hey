@@ -15,7 +15,7 @@ fragment Account on Account {
   metadata {
     ...AccountMetadata
   }
-  username(request: { autoResolve: true }) {
+  username {
     ...Username
   }
   heyEns: username(
