@@ -37,7 +37,6 @@ const Highlights = () => {
     () =>
       (posts ?? []).filter(
         (post) =>
-          !post.author.operations?.hasBlockedMe &&
           !post.author.operations?.isBlockedByMe &&
           !post.operations?.hasReported
       ),

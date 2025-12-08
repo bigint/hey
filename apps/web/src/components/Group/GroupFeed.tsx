@@ -33,11 +33,7 @@ const GroupFeed = ({ feed }: GroupFeedProps) => {
 
   const filteredPosts = useMemo(
     () =>
-      (posts ?? []).filter(
-        (post) =>
-          !post.author.operations?.hasBlockedMe &&
-          !post.author.operations?.isBlockedByMe
-      ),
+      (posts ?? []).filter((post) => !post.author.operations?.isBlockedByMe),
     [posts]
   );
 
