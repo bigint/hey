@@ -1,4 +1,7 @@
-import type { AccountActionExecutedNotificationFragment } from "@hey/indexer";
+import type {
+  AccountActionExecutedNotificationFragment,
+  TippingAccountActionExecuted
+} from "@hey/indexer";
 import plur from "plur";
 import { NotificationAccountAvatar } from "@/components/Notification/Account";
 import AggregatedNotificationTitle from "@/components/Notification/AggregatedNotificationTitle";
@@ -8,24 +11,36 @@ interface AccountActionExecutedNotificationProps {
   notification: AccountActionExecutedNotificationFragment;
 }
 
+function isTippingActionExecuted(
+  action: any
+): action is TippingAccountActionExecuted {
+  return action?.__typename === "TippingAccountActionExecuted";
+}
+
 const AccountActionExecutedNotification = ({
   notification
 }: AccountActionExecutedNotificationProps) => {
   const actions = notification.actions;
+  const firstAction = actions[0];
   const firstAccount =
-    actions[0].__typename === "TippingAccountActionExecuted"
-      ? actions[0].executedBy
+    firstAction.__typename === "TippingAccountActionExecuted"
+      ? firstAction.executedBy
       : undefined;
   const length = actions.length - 1;
   const moreThanOneAccount = length > 1;
   const type =
-    actions[0].__typename === "TippingAccountActionExecuted"
+    firstAction.__typename === "TippingAccountActionExecuted"
       ? "tipped"
       : undefined;
 
   const text = moreThanOneAccount
     ? `and ${length} ${plur("other", length)} ${type} you`
     : `${type} you`;
+
+  const amount =
+    firstAction && !moreThanOneAccount && isTippingActionExecuted(firstAction)
+      ? firstAction.tipAmount
+      : undefined;
 
   return (
     <div className="space-y-2">
@@ -53,6 +68,7 @@ const AccountActionExecutedNotification = ({
       <div className="ml-9">
         {firstAccount && (
           <AggregatedNotificationTitle
+            amount={amount}
             firstAccount={firstAccount}
             linkToType={`/accounts/${firstAccount.address}`}
             text={text}
