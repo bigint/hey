@@ -3,8 +3,8 @@ module.exports = {
     {
       name: 'hey.xyz',
       script: '/home/yoginth/.nvm/versions/node/v22.21.1/bin/pnpm',
-      args: '--filter @hey/api start',
-      cwd: '/home/yoginth/hey',
+      args: 'start',
+      cwd: '/home/yoginth/hey/apps/web',
       env: {
         NODE_ENV: 'production',
       },
