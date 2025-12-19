@@ -18,61 +18,6 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
 
-  apps/api:
-    dependencies:
-      '@hey/data':
-        specifier: workspace:*
-        version: link:../../packages/data
-      '@hey/helpers':
-        specifier: workspace:*
-        version: link:../../packages/helpers
-      '@hey/indexer':
-        specifier: workspace:*
-        version: link:../../packages/indexer
-      '@hono/node-server':
-        specifier: ^1.19.5
-        version: 1.19.5(hono@4.10.2)
-      '@hono/zod-validator':
-        specifier: ^0.7.4
-        version: 0.7.4(hono@4.10.2)(zod@4.1.11)
-      '@lens-chain/sdk':
-        specifier: ^1.0.3
-        version: 1.0.3(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(viem@2.38.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.11))
-      dotenv:
-        specifier: ^17.2.3
-        version: 17.2.3
-      hono:
-        specifier: ^4.10.2
-        version: 4.10.2
-      hono-rate-limiter:
-        specifier: ^0.4.2
-        version: 0.4.2(hono@4.10.2)
-      jose:
-        specifier: ^6.1.0
-        version: 6.1.0
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-      viem:
-        specifier: ^2.38.3
-        version: 2.38.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.11)
-      zod:
-        specifier: 4.1.11
-        version: 4.1.11
-    devDependencies:
-      '@hey/config':
-        specifier: workspace:*
-        version: link:../../packages/config
-      '@hey/types':
-        specifier: workspace:*
-        version: link:../../packages/types
-      '@types/node':
-        specifier: ^24.9.1
-        version: 24.9.1
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
   apps/web:
     dependencies:
       '@apollo/client':
@@ -786,24 +731,28 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-arm64@2.2.7':
     resolution: {integrity: sha512-nUdco104rjV9dULi1VssQ5R/kX2jE/Z2sDjyqS+siV9sTQda0DwmEUixFNRCWvZJRRiZUWhgiDFJ4n7RowO8Mg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@2.2.7':
     resolution: {integrity: sha512-MnsysF5s/iLC5wnYvuMseOy+m8Pd4bWG1uwlVyy2AUbfjAVUgtbYbboc5wMXljFrDY7e6rLjLTR4S2xqDpGlQg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-x64@2.2.7':
     resolution: {integrity: sha512-tPTcGAIEOOZrj2tQ7fdraWlaxNKApBw6l4In8wQQV1IyxnAexqi0hykHzKEX8hKKctf5gxGBfNCzyIvqpj4CFQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@2.2.7':
     resolution: {integrity: sha512-h5D1jhwA2b7cFXerYiJfXHSzzAMFFoEDL5Mc2BgiaEw0iaSgSso/3Nc6FbOR55aTQISql+IpB4PS7JoV26Gdbw==}
@@ -1332,18 +1281,6 @@ packages:
   '@hey-api/client-fetch@0.8.4':
     resolution: {integrity: sha512-SWtUjVEFIUdiJGR2NiuF0njsSrSdTe7WHWkp3BLH3DEl2bRhiflOnBo29NSDdrY90hjtTQiTQkBxUgGOF29Xzg==}
     deprecated: Starting with v0.73.0, this package is bundled directly inside @hey-api/openapi-ts.
-
-  '@hono/node-server@1.19.5':
-    resolution: {integrity: sha512-iBuhh+uaaggeAuf+TftcjZyWh2GEgZcVGXkNtskLVoWaXhnJtC5HLHrU8W1KHDoucqO1MswwglmkWLFyiDn4WQ==}
-    engines: {node: '>=18.14.1'}
-    peerDependencies:
-      hono: ^4
-
-  '@hono/zod-validator@0.7.4':
-    resolution: {integrity: sha512-biKGn3BRJVaftZlIPMyK+HCe/UHAjJ6sH0UyXe3+v0OcgVr9xfImDROTJFLtn9e3XEEAHGZIM9U6evu85abm8Q==}
-    peerDependencies:
-      hono: '>=3.9.0'
-      zod: ^3.25.0 || ^4.0.0
 
   '@hookform/resolvers@5.2.2':
     resolution: {integrity: sha512-A/IxlMLShx3KjV/HeTcTfaMxdwy690+L/ZADoeaTltLx+CVuzkeVIPuybK3jrRfw7YZnmdKsVVHAlEPIAEUNlA==}
@@ -3242,10 +3179,6 @@ packages:
   dot-case@3.0.4:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
 
-  dotenv@17.2.3:
-    resolution: {integrity: sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==}
-    engines: {node: '>=12'}
-
   dset@3.1.4:
     resolution: {integrity: sha512-2QF/g9/zTaPDc3BjNcVTGoBbXBgYfMTTceLaYcFJ/W9kggFUkhxD/hMEeuLKbugyef9SqAx8cpgwlIP/jinUTA==}
     engines: {node: '>=4'}
@@ -3643,11 +3576,6 @@ packages:
   hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
 
-  hono-rate-limiter@0.4.2:
-    resolution: {integrity: sha512-AAtFqgADyrmbDijcRTT/HJfwqfvhalya2Zo+MgfdrMPas3zSMD8SU03cv+ZsYwRU1swv7zgVt0shwN059yzhjw==}
-    peerDependencies:
-      hono: ^4.1.1
-
   hono@4.10.2:
     resolution: {integrity: sha512-p6fyzl+mQo6uhESLxbF5WlBOAJMDh36PljwlKtP5V1v09NxlqGru3ShK+4wKhSuhuYf8qxMmrivHOa/M7q0sMg==}
     engines: {node: '>=16.9.0'}
@@ -3832,9 +3760,6 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
-
-  jose@6.1.0:
-    resolution: {integrity: sha512-TTQJyoEoKcC1lscpVDCSsVgYzUDg/0Bt3WE//WiTPK6uOCQC2KZS4MpugbMWt/zyjkopgZoXhZuCi00gLudfUA==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -7064,15 +6989,6 @@ snapshots:
 
   '@hey-api/client-fetch@0.8.4': {}
 
-  '@hono/node-server@1.19.5(hono@4.10.2)':
-    dependencies:
-      hono: 4.10.2
-
-  '@hono/zod-validator@0.7.4(hono@4.10.2)(zod@4.1.11)':
-    dependencies:
-      hono: 4.10.2
-      zod: 4.1.11
-
   '@hookform/resolvers@5.2.2(react-hook-form@7.65.0(react@19.2.0))':
     dependencies:
       '@standard-schema/utils': 0.3.0
@@ -7230,11 +7146,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@lens-chain/sdk@1.0.3(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(viem@2.38.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.11))':
-    optionalDependencies:
-      ethers: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      viem: 2.38.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.11)
 
   '@lens-chain/sdk@1.0.3(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(viem@2.38.3(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.12))':
     optionalDependencies:
@@ -9988,8 +9899,6 @@ snapshots:
       no-case: 3.0.4
       tslib: 2.8.1
 
-  dotenv@17.2.3: {}
-
   dset@3.1.4: {}
 
   dunder-proto@1.0.1:
@@ -10277,6 +10186,7 @@ snapshots:
   get-tsconfig@4.13.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
+    optional: true
 
   glob-parent@5.1.2:
     dependencies:
@@ -10524,10 +10434,6 @@ snapshots:
     dependencies:
       react-is: 16.13.1
 
-  hono-rate-limiter@0.4.2(hono@4.10.2):
-    dependencies:
-      hono: 4.10.2
-
   hono@4.10.2: {}
 
   html-url-attributes@3.0.1: {}
@@ -10690,8 +10596,6 @@ snapshots:
       ws: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
 
   jiti@2.6.1: {}
-
-  jose@6.1.0: {}
 
   js-tokens@4.0.0: {}
 
@@ -12020,7 +11924,8 @@ snapshots:
 
   resolve-from@5.0.0: {}
 
-  resolve-pkg-maps@1.0.0: {}
+  resolve-pkg-maps@1.0.0:
+    optional: true
 
   restore-cursor@5.1.0:
     dependencies:
@@ -12348,6 +12253,7 @@ snapshots:
       get-tsconfig: 4.13.0
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   type-fest@4.41.0: {}
 
