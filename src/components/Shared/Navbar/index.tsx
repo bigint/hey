@@ -37,6 +37,7 @@ import {
 } from "@/indexer/generated";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
+import Pro from "./NavItems/Pro";
 import SignedAccount from "./SignedAccount";
 
 const navigationItems = {
@@ -187,7 +188,7 @@ const Navbar = () => {
       <NavItems isLoggedIn={!!currentAccount} />
       {currentAccount ? (
         <>
-          {/* <Pro /> */}
+          <Pro />
           <SignedAccount />
         </>
       ) : (
