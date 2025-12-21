@@ -15,7 +15,7 @@ const dependenciesToChunk = {
     "remark-stringify",
     "strip-markdown"
   ],
-  indexer: ["@/indexer/generated"],
+  indexer: ["./src/indexer/generated.ts"],
   media: ["plyr-react", "@livepeer/react", "browser-image-compression"],
   misc: [
     "@lens-chain/storage-client",
