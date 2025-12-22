@@ -45,5 +45,5 @@ jobs:
         run: |
           MACHINE_IP="$(tailscale ip -4 $MACHINE)"
           USERHOST="$MACHINE@$MACHINE_IP"
-          COMMAND="source ~/.zshrc && cd www/hey.xyz && pnpm build && pm2 restart hey.xyz"
+          COMMAND="source ~/.zshrc && cd www/hey.xyz && git pull --ff-only && pnpm install --frozen-lockfile && pnpm build && pm2 restart hey.xyz --update-env"
           ssh $USERHOST "$COMMAND"
