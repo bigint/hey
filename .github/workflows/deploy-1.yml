@@ -28,7 +28,7 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:ci
-          hostname: deploy-1-hey-xyz-${{ github.run_id }}
+          hostname: deploy-north-hey-xyz-${{ github.run_id }}
           ping: ${{ env.MACHINE }}
           version: latest
 
@@ -49,5 +49,5 @@ jobs:
         run: |
           MACHINE_IP="$(tailscale ip -4 $MACHINE)"
           USERHOST="root@$MACHINE_IP"
-          COMMAND="tailscale ping pi"
+          COMMAND="tailscale ping --c 20 --until-direct=false --size 65467 pi"
           ssh $USERHOST "$COMMAND"
