@@ -82,7 +82,7 @@
     "@tailwindcss/forms": "^0.5.10",
     "@types/hast": "^3.0.4",
     "@types/node": "^24.9.1",
-    "@types/react": "^19.2.2",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
     "typescript": "^5.9.3",
