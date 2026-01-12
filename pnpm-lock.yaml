@@ -90,8 +90,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       plyr-react:
-        specifier: ^5.3.0
-        version: 5.3.0(plyr@3.8.3)(react@19.2.3)
+        specifier: ^6.0.0
+        version: 6.0.0(plyr@3.8.3)(react@19.2.3)
       prosekit:
         specifier: ^0.17.1
         version: 0.17.1(@shikijs/types@3.21.0)(@types/hast@3.0.4)(preact@10.28.2)(prosemirror-model@1.25.4)(prosemirror-state@1.4.4)(prosemirror-transform@1.10.5)(prosemirror-view@1.41.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -4756,15 +4756,12 @@ packages:
     resolution: {integrity: sha512-VP/72JeXqak2KiOzjgKtQen5y3IZHn+9GOuLDafPv0eXa47xq0At93XahYBs26MsifCQ4enGKwbjBTKgb9QJXg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  plyr-react@5.3.0:
-    resolution: {integrity: sha512-m36/HrpHwg1N2rq3E31E8/kpAH55vk6qHUg17MG4uu9jbWYxnkN39lLmZQwxW7/qpDPfW5aGUJ6R3u23V0R3zA==}
+  plyr-react@6.0.0:
+    resolution: {integrity: sha512-P8M+BuQoGrCd7m6K4QwwQlcSS1E26OeXuJTAmgLx11B9UqJrdc3Ka4TFwPwF3jul4EsVxSK9Zn1ME3DV8m9gdw==}
     engines: {node: '>=16'}
     peerDependencies:
       plyr: ^3.7.7
       react: '>=16.8'
-    peerDependenciesMeta:
-      react:
-        optional: true
 
   plyr@3.8.3:
     resolution: {integrity: sha512-0+iI5uw0WRvtKBpgPCkmQQv7ucHVQKTEo6UFJjgJ8cy/JZhy0dQqshHQVitHXV6l2O3MzhgnuvQ95VSkWcWeSw==}
@@ -12426,12 +12423,11 @@ snapshots:
     dependencies:
       irregular-plurals: 3.5.0
 
-  plyr-react@5.3.0(plyr@3.8.3)(react@19.2.3):
+  plyr-react@6.0.0(plyr@3.8.3)(react@19.2.3):
     dependencies:
       plyr: 3.8.3
-      react-aptor: 2.0.0(react@19.2.3)
-    optionalDependencies:
       react: 19.2.3
+      react-aptor: 2.0.0(react@19.2.3)
 
   plyr@3.8.3:
     dependencies:
