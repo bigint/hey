@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Homelab
 
 on:
   workflow_dispatch:
@@ -7,15 +7,15 @@ on:
       - main
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-homelab-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Deploy
+  deploy-homelab:
+    name: Deploy Homelab
     runs-on: ubuntu-latest
     env:
-      MACHINE: hey-xyz
+      MACHINE: hey-xyz-homelab
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,13 +26,13 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:ci
-          hostname: deploy-hey-xyz-${{ github.run_id }}
+          hostname: deploy-hey-xyz-homelab-${{ github.run_id }}
           ping: ${{ env.MACHINE }}
           version: latest
 
       - name: Add SSH key
         env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KEY: ${{ secrets.SSH_KEY_HOMELAB }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           mkdir -p ~/.ssh
