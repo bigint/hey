@@ -22,7 +22,7 @@ importers:
         version: 2.2.0(react@19.2.3)
       '@hookform/resolvers':
         specifier: 5.2.2
-        version: 5.2.2(react-hook-form@7.69.0(react@19.2.3))
+        version: 5.2.2(react-hook-form@7.71.0(react@19.2.3))
       '@lens-chain/sdk':
         specifier: ^1.0.3
         version: 1.0.3(viem@2.43.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.11))
@@ -108,8 +108,8 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(react@19.2.3)
       react-hook-form:
-        specifier: ^7.65.0
-        version: 7.69.0(react@19.2.3)
+        specifier: ^7.71.0
+        version: 7.71.0(react@19.2.3)
       react-hotkeys-hook:
         specifier: ^5.2.1
         version: 5.2.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -5025,8 +5025,8 @@ packages:
     peerDependencies:
       react: ^16.6.0 || ^17.0.0 || ^18.0.0
 
-  react-hook-form@7.69.0:
-    resolution: {integrity: sha512-yt6ZGME9f4F6WHwevrvpAjh42HMvocuSnSIHUGycBqXIJdhqGSPQzTpGF+1NLREk/58IdPxEMfPcFCjlMhclGw==}
+  react-hook-form@7.71.0:
+    resolution: {integrity: sha512-oFDt/iIFMV9ZfV52waONXzg4xuSlbwKUPvXVH2jumL1me5qFhBMc4knZxuXiZ2+j6h546sYe3ZKJcg/900/iHw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -7430,10 +7430,10 @@ snapshots:
 
   '@hey-api/client-fetch@0.8.4': {}
 
-  '@hookform/resolvers@5.2.2(react-hook-form@7.69.0(react@19.2.3))':
+  '@hookform/resolvers@5.2.2(react-hook-form@7.71.0(react@19.2.3))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.69.0(react@19.2.3)
+      react-hook-form: 7.71.0(react@19.2.3)
 
   '@inquirer/ansi@1.0.2': {}
 
@@ -12679,7 +12679,7 @@ snapshots:
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
 
-  react-hook-form@7.69.0(react@19.2.3):
+  react-hook-form@7.71.0(react@19.2.3):
     dependencies:
       react: 19.2.3
 
