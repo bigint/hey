@@ -168,8 +168,8 @@ importers:
         specifier: ^2.44.1
         version: 2.44.1(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.1.11)
       virtua:
-        specifier: ^0.46.3
-        version: 0.46.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.48.2
+        version: 0.48.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       vite:
         specifier: ^7.1.12
         version: 7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
@@ -5759,8 +5759,8 @@ packages:
       typescript:
         optional: true
 
-  virtua@0.46.7:
-    resolution: {integrity: sha512-tQcigCJLiskShPc+/h6zKfexXcbgqRq+Q56N+Qsm4mBGvmaqeHywOY03t7teYsue/IY30/fWxxLa3Vxwr6rhnA==}
+  virtua@0.48.2:
+    resolution: {integrity: sha512-z8zko7BRnSruf3pYMjhfKIdz138quGVRxSNSZJ7rcrhnxd03mRhGIWNZULE1Dz0VMdRVVaBeT6Ow8ynayHW3Jg==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
@@ -13511,7 +13511,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  virtua@0.46.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  virtua@0.48.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     optionalDependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
