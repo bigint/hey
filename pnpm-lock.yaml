@@ -117,8 +117,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.8)(react@19.2.3)
       react-router:
-        specifier: ^7.9.4
-        version: 7.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^7.12.0
+        version: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-tracked:
         specifier: ^2.0.1
         version: 2.0.1(react@19.2.3)(scheduler@0.27.0)
@@ -5082,8 +5082,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-router@7.11.0:
-    resolution: {integrity: sha512-uI4JkMmjbWCZc01WVP2cH7ZfSzH91JAZUDd7/nIprDgWxBV1TkkmLToFh7EbMTcMak8URFRa2YoBL/W8GWnCTQ==}
+  react-router@7.12.0:
+    resolution: {integrity: sha512-kTPDYPFzDVGIIGNLS5VJykK0HfHLY5MF3b+xj0/tTyNYL1gF1qs7u67Z9jEhQk2sQ98SUaHxlG31g1JtF7IfVw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
@@ -12775,7 +12775,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.8
 
-  react-router@7.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       cookie: 1.1.1
       react: 19.2.3
