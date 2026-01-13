@@ -77,7 +77,7 @@
     "@graphql-codegen/fragment-matcher": "^6.0.0",
     "@graphql-codegen/typescript": "^5.0.2",
     "@graphql-codegen/typescript-operations": "^5.0.2",
-    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
+    "@graphql-codegen/typescript-react-apollo": "^4.4.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
     "@types/hast": "^3.0.4",
