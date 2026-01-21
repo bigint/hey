@@ -1,0 +1,39 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+          hostname: deploy-hey-xyz-${{ github.run_id }}
+          ping: hey-xyz
+          version: latest
+
+      - name: Deploy
+        run: |
+          tailscale ssh root@hey-xyz "\
+            cd hey.xyz && \
+            git pull --ff-only && \
+            pnpm install --frozen-lockfile && \
+            pnpm build && \
+            pm2 restart hey.xyz --update-env \
+          "
