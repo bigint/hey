@@ -81,8 +81,8 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2
       motion:
-        specifier: ^12.26.1
-        version: 12.26.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^12.27.1
+        version: 12.27.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       motion-plus-react:
         specifier: ^1.5.4
         version: 1.5.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -3771,8 +3771,8 @@ packages:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
     engines: {node: '>=12.20.0'}
 
-  framer-motion@12.26.1:
-    resolution: {integrity: sha512-Uzc8wGldU4FpmGotthjjcj0SZhigcODjqvKT7lzVZHsmYkzQMFfMIv0vHQoXCeoe/Ahxqp4by4A6QbzFA/lblw==}
+  framer-motion@12.27.1:
+    resolution: {integrity: sha512-cEAqO69kcZt3gL0TGua8WTgRQfv4J57nqt1zxHtLKwYhAwA0x9kDS/JbMa1hJbwkGY74AGJKvZ9pX/IqWZtZWQ==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -4551,8 +4551,8 @@ packages:
   motion-dom@12.23.23:
     resolution: {integrity: sha512-n5yolOs0TQQBRUFImrRfs/+6X4p3Q4n1dUEqt/H58Vx7OW6RF+foWEgmTVDhIWJIMXOuNNL0apKH2S16en9eiA==}
 
-  motion-dom@12.24.11:
-    resolution: {integrity: sha512-DlWOmsXMJrV8lzZyd+LKjG2CXULUs++bkq8GZ2Sr0R0RRhs30K2wtY+LKiTjhmJU3W61HK+rB0GLz6XmPvTA1A==}
+  motion-dom@12.27.1:
+    resolution: {integrity: sha512-V/53DA2nBqKl9O2PMJleSUb/G0dsMMeZplZwgIQf5+X0bxIu7Q1cTv6DrjvTTGYRm3+7Y5wMlRZ1wT61boU/bQ==}
 
   motion-plus-dom@1.6.0:
     resolution: {integrity: sha512-A4uGFtMG8rl+wQCXBt6h6+G9PK7ZCF2yB4n6RTvmm2kXuSZaXz6LmK9hBWH86RWY2uQUrLTuLypqTZxW1fIM5Q==}
@@ -4575,8 +4575,8 @@ packages:
   motion-utils@12.24.10:
     resolution: {integrity: sha512-x5TFgkCIP4pPsRLpKoI86jv/q8t8FQOiM/0E8QKBzfMozWHfkKap2gA1hOki+B5g3IsBNpxbUnfOum1+dgvYww==}
 
-  motion@12.26.1:
-    resolution: {integrity: sha512-IVhzx9HOQTiJ9ykthMOlZPnLwrkXziN5Q/yebsqBYlFJb2rHP8yhmKc8O/YUT9byPJlxOeqkzfNYCrVKZx8vqg==}
+  motion@12.27.1:
+    resolution: {integrity: sha512-FAZTPDm1LccBdWSL46WLnEdTSHmdVx+fdWK8f61qBQn67MmFefXLXlrwy94rK2DDsd9A50Gj8H+LYCgQ/cQlFg==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -8045,7 +8045,7 @@ snapshots:
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
       '@types/debug': 4.1.12
-      debug: 4.4.3
+      debug: 4.3.4
       pony-cause: 2.1.11
       semver: 7.7.3
       uuid: 9.0.1
@@ -11272,9 +11272,9 @@ snapshots:
     dependencies:
       fetch-blob: 3.2.0
 
-  framer-motion@12.26.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  framer-motion@12.27.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      motion-dom: 12.24.11
+      motion-dom: 12.27.1
       motion-utils: 12.24.10
       tslib: 2.8.1
     optionalDependencies:
@@ -12309,13 +12309,13 @@ snapshots:
     dependencies:
       motion-utils: 12.23.6
 
-  motion-dom@12.24.11:
+  motion-dom@12.27.1:
     dependencies:
       motion-utils: 12.24.10
 
   motion-plus-dom@1.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      motion: 12.26.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      motion: 12.27.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       motion-dom: 12.23.23
       motion-utils: 12.23.6
     transitivePeerDependencies:
@@ -12325,7 +12325,7 @@ snapshots:
 
   motion-plus-react@1.5.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      motion: 12.26.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      motion: 12.27.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       motion-dom: 12.23.23
       motion-plus-dom: 1.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       motion-utils: 12.23.6
@@ -12339,9 +12339,9 @@ snapshots:
 
   motion-utils@12.24.10: {}
 
-  motion@12.26.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  motion@12.27.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      framer-motion: 12.26.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      framer-motion: 12.27.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       tslib: 2.8.1
     optionalDependencies:
       react: 19.2.3
