@@ -37,7 +37,14 @@ const CreateGroup = () => {
           <H5>Create a group</H5>
           <div>Create a new group on Hey</div>
         </div>
-        <Button onClick={() => setShowModal(true)}>Create group</Button>
+        <Button
+          onClick={() => {
+            umami.track("open_create_group");
+            setShowModal(true);
+          }}
+        >
+          Create group
+        </Button>
       </Card>
       <Modal
         onClose={() => setShowModal(false)}

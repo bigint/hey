@@ -69,6 +69,7 @@ const LinkUsername = () => {
     }
 
     setLinkingUsername(localName);
+    umami.track("link_username");
 
     return await assignUsernameToAccount({
       variables: { request: { username: { localName } } }

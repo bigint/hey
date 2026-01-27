@@ -20,7 +20,10 @@ const CollectAction = ({ post }: CollectActionProps) => {
       <button
         aria-label="Collect"
         className="rounded-full p-1.5 outline-offset-2 hover:bg-gray-300/20"
-        onClick={() => setShowCollectModal(true)}
+        onClick={() => {
+          umami.track("open_collect_modal");
+          setShowCollectModal(true);
+        }}
         type="button"
       >
         <Tooltip

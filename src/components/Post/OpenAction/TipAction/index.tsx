@@ -32,7 +32,10 @@ const TipAction = ({ post, showCount }: TipActionProps) => {
               : "text-gray-500 hover:bg-gray-300/20 dark:text-gray-200",
             "rounded-full p-1.5 outline-offset-2"
           )}
-          onClick={stopEventPropagation}
+          onClick={(e) => {
+            stopEventPropagation(e);
+            umami.track("open_tip_action");
+          }}
         >
           <Tooltip content="Tip" placement="top" withDelay>
             <TipIcon

@@ -45,6 +45,7 @@ const ReportAccount = ({ account }: ReportAccountProps) => {
   const reportAccount = async ({
     additionalComment
   }: z.infer<typeof ValidationSchema>) => {
+    umami.track("report_account");
     const response = await createReport({
       variables: {
         request: {

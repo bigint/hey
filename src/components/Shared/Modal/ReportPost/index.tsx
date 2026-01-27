@@ -39,6 +39,7 @@ const ReportPost = ({ postId }: ReportPostProps) => {
   const reportPost = async ({
     additionalComment
   }: z.infer<typeof ValidationSchema>) => {
+    umami.track("report_post");
     return await createReport({
       variables: {
         request: {

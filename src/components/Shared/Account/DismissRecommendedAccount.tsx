@@ -19,6 +19,7 @@ const DismissRecommendedAccount = ({
     });
 
   const handleDismiss = async () => {
+    umami.track("dismiss_recommendation");
     await dismissRecommendedAccount();
   };
 

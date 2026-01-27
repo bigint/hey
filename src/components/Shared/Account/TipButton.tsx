@@ -23,7 +23,10 @@ const TipButton = ({ account }: TipButtonProps) => {
       <MenuButton
         aria-label="Tip"
         as={Button}
-        onClick={stopEventPropagation}
+        onClick={(e) => {
+          stopEventPropagation(e);
+          umami.track("open_tip_menu");
+        }}
         outline
       >
         <Tooltip content="Tip" placement="top" withDelay>

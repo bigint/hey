@@ -71,9 +71,10 @@ const List = () => {
               hideUnfollowButton
             />
             <Button
-              onClick={() =>
-                setShowBlockOrUnblockAlert(true, accountBlocked.account)
-              }
+              onClick={() => {
+                umami.track("open_unblock_from_list");
+                setShowBlockOrUnblockAlert(true, accountBlocked.account);
+              }}
             >
               Unblock
             </Button>

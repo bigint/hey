@@ -46,6 +46,7 @@ const List = () => {
   const handleRevoke = async (authenticationId: string) => {
     setRevoking(true);
     setRevokeingSessionId(authenticationId);
+    umami.track("revoke_session");
 
     return await revokeAuthentication({
       variables: { request: { authenticationId } }
