@@ -22,7 +22,10 @@ const Tabs = ({ tabs, active, setActive, layoutId, className }: TabsProps) => {
             className="relative cursor-pointer px-3 py-1.5 text-sm outline-hidden transition-colors"
             key={tab.type}
             layout
-            onClick={() => setActive(tab.type)}
+            onClick={() => {
+              umami.track(`switch_${layoutId}`, { tab: tab.type });
+              setActive(tab.type);
+            }}
             tabIndex={0}
           >
             {active === tab.type ? (

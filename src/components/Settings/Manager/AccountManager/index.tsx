@@ -35,7 +35,13 @@ const AccountManager = () => {
         />
         {type === Type.MANAGERS && (
           <>
-            <Button onClick={() => setShowAddManagerModal(true)} size="sm">
+            <Button
+              onClick={() => {
+                umami.track("open_add_manager_modal");
+                setShowAddManagerModal(true);
+              }}
+              size="sm"
+            >
               Add manager
             </Button>
             <Modal
