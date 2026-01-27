@@ -13,7 +13,7 @@
     "typecheck": "tsc --pretty"
   },
   "dependencies": {
-    "@apollo/client": "3.14.0",
+    "@apollo/client": "4.1.2",
     "@biomejs/biome": "^2.3.10",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
