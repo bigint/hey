@@ -26,6 +26,7 @@ const CopyLink = ({ account }: CopyLinkProps) => {
       }
       onClick={(event) => {
         stopEventPropagation(event);
+        umami.track("copy_profile_link");
         copyLink();
       }}
     >
