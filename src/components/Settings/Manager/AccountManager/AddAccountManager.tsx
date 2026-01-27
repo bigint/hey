@@ -57,6 +57,7 @@ const AddAccountManager = ({
     }
 
     setIsSubmitting(true);
+    umami.track("add_account_manager");
 
     return await addAccountManager({
       variables: {

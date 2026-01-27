@@ -46,6 +46,7 @@ const UnlinkUsername = () => {
     }
 
     setUnlinking(true);
+    umami.track("unlink_username");
 
     return await unassignUsernameFromAccount({
       variables: { request: { namespace: currentAccount.username?.namespace } }

@@ -14,7 +14,10 @@ const SmallCollectButton = ({ post }: SmallCollectButtonProps) => {
   return (
     <>
       <Button
-        onClick={() => setShowCollectModal(true)}
+        onClick={() => {
+          umami.track("open_collect_modal");
+          setShowCollectModal(true);
+        }}
         outline={!hasSimpleCollected}
         size="sm"
       >

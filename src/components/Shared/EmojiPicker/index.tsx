@@ -31,6 +31,9 @@ const EmojiPicker = ({
           onClick={(e) => {
             e.preventDefault();
             stopEventPropagation(e);
+            if (!showEmojiPicker) {
+              umami.track("open_emoji_picker");
+            }
             setShowEmojiPicker(!showEmojiPicker);
           }}
           type="button"

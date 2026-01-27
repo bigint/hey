@@ -66,6 +66,7 @@ const CancelGroupMembershipRequest = ({
 
   const handleCancelGroupMembershipRequest = async () => {
     setIsSubmitting(true);
+    umami.track("cancel_group_request");
 
     return await cancelGroupMembershipRequest({
       variables: { request: { group: group.address } }
