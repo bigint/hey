@@ -65,6 +65,7 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
   const handleSubmit = useCallback(
     ({ query }: z.infer<typeof ValidationSchema>) => {
       const search = query.trim();
+      umami.track("search");
       if (pathname === "/search") {
         navigate(`/search?q=${encodeURIComponent(search)}&type=${type}`);
       } else {

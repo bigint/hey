@@ -64,6 +64,7 @@ const Leave = ({ group, small }: LeaveProps) => {
 
   const handleLeave = async () => {
     setIsSubmitting(true);
+    umami.track("leave_group");
 
     return await leaveGroup({
       variables: { request: { group: group.address } }

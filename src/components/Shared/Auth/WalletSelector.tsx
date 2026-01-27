@@ -27,6 +27,7 @@ const WalletSelector: FC = () => {
   const handleConnect = async (connector: Connector) => {
     try {
       await connectAsync({ connector });
+      umami.track("connect_wallet", { wallet: connector.id });
     } catch {}
   };
 

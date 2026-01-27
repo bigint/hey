@@ -131,6 +131,7 @@ const Transfer = ({ token }: TransferProps) => {
 
   const handleDeposit = async () => {
     setIsSubmitting(true);
+    umami.track("top_up", { amount, symbol });
     return await deposit({
       variables: { request: buildDepositRequest(amount, token) }
     });

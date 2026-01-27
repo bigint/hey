@@ -99,6 +99,7 @@ const Join = ({
 
   const handleJoin = async () => {
     setIsSubmitting(true);
+    umami.track("join_group");
 
     if (group.membershipApprovalEnabled) {
       return await requestGroupMembership({

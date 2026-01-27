@@ -23,6 +23,7 @@ const Delete = ({ post }: DeleteProps) => {
       }
       onClick={(event) => {
         stopEventPropagation(event);
+        umami.track("delete_post");
         setShowPostDeleteAlert(true, post);
       }}
     >
