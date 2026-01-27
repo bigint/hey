@@ -23,7 +23,10 @@ const AccountMenu = ({ account }: AccountMenuProps) => {
         <button
           aria-label="More"
           className="rounded-full p-1.5 hover:bg-gray-300/20"
-          onClick={stopEventPropagation}
+          onClick={(e) => {
+            stopEventPropagation(e);
+            umami.track("open_account_menu");
+          }}
           type="button"
         >
           <EllipsisVerticalIcon className="size-5 text-gray-500 dark:text-gray-200" />

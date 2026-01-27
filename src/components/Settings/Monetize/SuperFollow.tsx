@@ -91,6 +91,7 @@ const SuperFollow = () => {
 
   const handleUpdateRule = (remove: boolean) => {
     setIsSubmitting(true);
+    umami.track(remove ? "remove_super_follow" : "update_super_follow");
 
     return updateAccountFollowRules({
       variables: {
