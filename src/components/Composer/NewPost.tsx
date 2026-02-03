@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { Card, Image } from "@/components/Shared/UI";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import NewPublication from "./NewPublication";

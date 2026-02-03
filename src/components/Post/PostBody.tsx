@@ -7,8 +7,8 @@ import Attachments from "@/components/Shared/Post/Attachments";
 import PostLink from "@/components/Shared/Post/PostLink";
 import Video from "@/components/Shared/Post/Video";
 import { H6 } from "@/components/Shared/UI";
-import getPostData from "@/helpers//getPostData";
-import { isRepost } from "@/helpers//postHelpers";
+import getPostData from "@/helpers/getPostData";
+import { isRepost } from "@/helpers/postHelpers";
 import cn from "@/helpers/cn";
 import type { AnyPostFragment } from "@/indexer/generated";
 

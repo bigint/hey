@@ -2,7 +2,7 @@ import { QueueListIcon } from "@heroicons/react/24/outline";
 import dayjs from "dayjs";
 import PostWarning from "@/components/Shared/Post/PostWarning";
 import { Tooltip } from "@/components/Shared/UI";
-import { isRepost } from "@/helpers//postHelpers";
+import { isRepost } from "@/helpers/postHelpers";
 import cn from "@/helpers/cn";
 import {
   getBlockedByMeMessage,

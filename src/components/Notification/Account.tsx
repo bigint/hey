@@ -3,8 +3,8 @@ import { memo } from "react";
 import AccountLink from "@/components/Shared/Account/AccountLink";
 import AccountPreview from "@/components/Shared/Account/AccountPreview";
 import { Image } from "@/components/Shared/UI";
-import getAccount from "@/helpers//getAccount";
-import getAvatar from "@/helpers//getAvatar";
+import getAccount from "@/helpers/getAccount";
+import getAvatar from "@/helpers/getAvatar";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { AccountFragment } from "@/indexer/generated";
 

@@ -2,7 +2,7 @@ import { memo } from "react";
 import CollectAction from "@/components/Post/OpenAction/CollectAction";
 import SmallCollectButton from "@/components/Post/OpenAction/CollectAction/SmallCollectButton";
 import TipAction from "@/components/Post/OpenAction/TipAction";
-import { isRepost } from "@/helpers//postHelpers";
+import { isRepost } from "@/helpers/postHelpers";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@/indexer/generated";
 import Comment from "./Comment";

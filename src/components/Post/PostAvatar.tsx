@@ -1,8 +1,8 @@
 import { memo } from "react";
 import AccountLink from "@/components/Shared/Account/AccountLink";
 import { Image } from "@/components/Shared/UI";
-import getAvatar from "@/helpers//getAvatar";
-import { isRepost } from "@/helpers//postHelpers";
+import getAvatar from "@/helpers/getAvatar";
+import { isRepost } from "@/helpers/postHelpers";
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type {

@@ -1,7 +1,7 @@
 import Slug from "@/components/Shared/Slug";
 import { H3, Image } from "@/components/Shared/UI";
 import { STATIC_IMAGES_URL } from "@/data/constants";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import type { AccountFragment } from "@/indexer/generated";
 
 interface DeletedDetailsProps {

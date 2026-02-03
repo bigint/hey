@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Select } from "@/components/Shared/UI";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import {
   type GroupFragment,
   GroupsOrderBy,

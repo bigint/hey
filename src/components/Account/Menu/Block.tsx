@@ -1,7 +1,7 @@
 import { MenuItem } from "@headlessui/react";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { type MouseEvent, useCallback } from "react";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { AccountFragment } from "@/indexer/generated";

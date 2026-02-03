@@ -4,8 +4,8 @@ import FollowersYouKnow from "@/components/Shared/Modal/FollowersYouKnow";
 import FollowersYouKnowShimmer from "@/components/Shared/Shimmer/FollowersYouKnowShimmer";
 import { Modal, StackedAvatars } from "@/components/Shared/UI";
 import { TRANSFORMS } from "@/data/constants";
-import getAccount from "@/helpers//getAccount";
-import getAvatar from "@/helpers//getAvatar";
+import getAccount from "@/helpers/getAccount";
+import getAvatar from "@/helpers/getAvatar";
 import { useFollowersYouKnowQuery } from "@/indexer/generated";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 

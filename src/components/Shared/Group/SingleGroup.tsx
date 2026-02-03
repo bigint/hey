@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import Markup from "@/components/Shared/Markup";
 import { Image } from "@/components/Shared/UI";
 import { TRANSFORMS } from "@/data/constants";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import cn from "@/helpers/cn";
 import getMentions from "@/helpers/getMentions";
 import type { GroupFragment } from "@/indexer/generated";

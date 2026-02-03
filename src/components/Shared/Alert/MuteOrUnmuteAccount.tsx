@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { Alert } from "@/components/Shared/UI";
 import { ERRORS } from "@/data/errors";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import errorToast from "@/helpers/errorToast";
 import { useMuteMutation, useUnmuteMutation } from "@/indexer/generated";
 import { useMuteAlertStore } from "@/store/non-persisted/alert/useMuteAlertStore";

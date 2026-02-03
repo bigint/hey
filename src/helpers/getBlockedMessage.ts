@@ -1,4 +1,4 @@
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import type { AccountFragment } from "@/indexer/generated";
 
 const formatMessage = (

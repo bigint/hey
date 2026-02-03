@@ -4,7 +4,7 @@ import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { type Dispatch, type SetStateAction, useCallback } from "react";
 import { toast } from "sonner";
 import { ERRORS } from "@/data/errors";
-import { isRepost } from "@/helpers//postHelpers";
+import { isRepost } from "@/helpers/postHelpers";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";

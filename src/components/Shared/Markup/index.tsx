@@ -6,7 +6,7 @@ import linkifyRegex from "remark-linkify-regex";
 import stripMarkdown from "strip-markdown";
 import type { PluggableList } from "unified";
 import { Regex } from "@/data/regex";
-import trimify from "@/helpers//trimify";
+import trimify from "@/helpers/trimify";
 import type { PostMentionFragment } from "@/indexer/generated";
 import MarkupLink from "./MarkupLink";
 

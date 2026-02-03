@@ -1,7 +1,7 @@
 import { MenuItem } from "@headlessui/react";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
-import generateUUID from "@/helpers//generateUUID";
-import getPostData from "@/helpers//getPostData";
+import generateUUID from "@/helpers/generateUUID";
+import getPostData from "@/helpers/getPostData";
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { PostFragment } from "@/indexer/generated";

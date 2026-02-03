@@ -1,4 +1,4 @@
-import parseJwt from "@/helpers//parseJwt";
+import parseJwt from "@/helpers/parseJwt";
 import apolloClient from "@/indexer/apollo/client";
 import { RefreshDocument, type RefreshMutation } from "@/indexer/generated";
 import { signIn, signOut } from "@/store/persisted/useAuthStore";

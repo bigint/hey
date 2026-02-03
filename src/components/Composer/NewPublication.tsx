@@ -11,7 +11,7 @@ import Wrapper from "@/components/Shared/Embed/Wrapper";
 import EmojiPicker from "@/components/Shared/EmojiPicker";
 import { Button, Card, H6 } from "@/components/Shared/UI";
 import { ERRORS } from "@/data/errors";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import collectActionParams from "@/helpers/collectActionParams";
 import errorToast from "@/helpers/errorToast";
 import getMentions from "@/helpers/getMentions";

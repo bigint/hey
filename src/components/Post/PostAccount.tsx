@@ -7,8 +7,8 @@ import AccountPreview from "@/components/Shared/Account/AccountPreview";
 import PostLink from "@/components/Shared/Post/PostLink";
 import { Image } from "@/components/Shared/UI";
 import { TRANSFORMS } from "@/data/constants";
-import getAccount from "@/helpers//getAccount";
-import getAvatar from "@/helpers//getAvatar";
+import getAccount from "@/helpers/getAccount";
+import getAvatar from "@/helpers/getAvatar";
 import formatRelativeOrAbsolute from "@/helpers/datetime/formatRelativeOrAbsolute";
 import type {
   AccountFragment,
