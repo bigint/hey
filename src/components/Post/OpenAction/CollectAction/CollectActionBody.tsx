@@ -25,9 +25,9 @@ import {
 } from "@/components/Shared/UI";
 import { BLOCK_EXPLORER_URL } from "@/data/constants";
 import { tokens } from "@/data/tokens";
-import formatAddress from "@/helpers//formatAddress";
-import getAccount from "@/helpers//getAccount";
-import { isRepost } from "@/helpers//postHelpers";
+import formatAddress from "@/helpers/formatAddress";
+import getAccount from "@/helpers/getAccount";
+import { isRepost } from "@/helpers/postHelpers";
 import getTokenImage from "@/helpers/getTokenImage";
 import humanize from "@/helpers/humanize";
 import nFormatter from "@/helpers/nFormatter";

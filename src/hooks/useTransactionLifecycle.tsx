@@ -1,7 +1,7 @@
 import { sendEip712Transaction, sendTransaction } from "viem/zksync";
 import { useWalletClient } from "wagmi";
 import { ERRORS } from "@/data/errors";
-import getTransactionData from "@/helpers//getTransactionData";
+import getTransactionData from "@/helpers/getTransactionData";
 import type {
   SelfFundedTransactionRequestFragment,
   SponsoredTransactionRequestFragment,

@@ -4,7 +4,7 @@ import JoinLeaveButton from "@/components/Shared/Group/JoinLeaveButton";
 import Markup from "@/components/Shared/Markup";
 import { Button, H3, Image, LightBox } from "@/components/Shared/UI";
 import { TRANSFORMS } from "@/data/constants";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import getMentions from "@/helpers/getMentions";
 import type { GroupFragment } from "@/indexer/generated";
 import { useAccountStore } from "@/store/persisted/useAccountStore";

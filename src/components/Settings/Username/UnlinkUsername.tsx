@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { Button, H6 } from "@/components/Shared/UI";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useUnassignUsernameFromAccountMutation } from "@/indexer/generated";

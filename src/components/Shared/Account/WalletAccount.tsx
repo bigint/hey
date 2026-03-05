@@ -5,7 +5,7 @@ import { useEnsName } from "wagmi";
 import Slug from "@/components/Shared/Slug";
 import { Image } from "@/components/Shared/UI";
 import { BLOCK_EXPLORER_URL, DEFAULT_AVATAR } from "@/data/constants";
-import formatAddress from "@/helpers//formatAddress";
+import formatAddress from "@/helpers/formatAddress";
 
 interface WalletAccountProps {
   address: Address;

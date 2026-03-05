@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import getAccount from "@/helpers//getAccount";
-import getAvatar from "@/helpers//getAvatar";
+import getAccount from "@/helpers/getAccount";
+import getAvatar from "@/helpers/getAvatar";
 import { AccountsOrderBy, useAccountsLazyQuery } from "@/indexer/generated";
 
 const SUGGESTION_LIST_LENGTH_LIMIT = 5;

@@ -9,8 +9,8 @@ import PageLayout from "@/components/Shared/PageLayout";
 import { EmptyState } from "@/components/Shared/UI";
 import { STATIC_IMAGES_URL } from "@/data/constants";
 import { AccountFeedType } from "@/data/enums";
-import getAccount from "@/helpers//getAccount";
-import isAccountDeleted from "@/helpers//isAccountDeleted";
+import getAccount from "@/helpers/getAccount";
+import isAccountDeleted from "@/helpers/isAccountDeleted";
 import {
   getBlockedByMeMessage,
   getBlockedMeMessage

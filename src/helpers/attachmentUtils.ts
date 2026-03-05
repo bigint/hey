@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import generateUUID from "@/helpers//generateUUID";
+import generateUUID from "@/helpers/generateUUID";
 import type { NewAttachment } from "@/types/misc";
 import compressImage from "./compressImage";
 

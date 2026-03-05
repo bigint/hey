@@ -1,6 +1,6 @@
 import { MenuItem } from "@headlessui/react";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
-import getPostData from "@/helpers//getPostData";
+import getPostData from "@/helpers/getPostData";
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import useCopyToClipboard from "@/hooks/useCopyToClipboard";

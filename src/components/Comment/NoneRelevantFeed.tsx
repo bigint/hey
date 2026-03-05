@@ -5,7 +5,7 @@ import SinglePost from "@/components/Post/SinglePost";
 import PostFeed from "@/components/Shared/Post/PostFeed";
 import { Card, StackedAvatars } from "@/components/Shared/UI";
 import { TRANSFORMS } from "@/data/constants";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import {
   PageSize,
   type PostReferencesRequest,

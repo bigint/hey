@@ -1,7 +1,7 @@
 import type { ErrorInfo, ReactNode } from "react";
 import { Component } from "react";
 import SiteError from "@/components/Shared/SiteError";
-import logger from "@/helpers//logger";
+import logger from "@/helpers/logger";
 
 interface ErrorBoundaryProps {
   children?: ReactNode;

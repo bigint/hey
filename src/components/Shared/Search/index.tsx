@@ -7,7 +7,7 @@ import { z } from "zod";
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import Loader from "@/components/Shared/Loader";
 import { Card, Form, Input, useZodForm } from "@/components/Shared/UI";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import cn from "@/helpers/cn";
 import {
   type AccountFragment,

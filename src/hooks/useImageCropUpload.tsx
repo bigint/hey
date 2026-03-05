@@ -8,8 +8,8 @@ import {
   type TRANSFORMS
 } from "@/data/constants";
 import { ERRORS } from "@/data/errors";
-import imageKit from "@/helpers//imageKit";
-import sanitizeDStorageUrl from "@/helpers//sanitizeDStorageUrl";
+import imageKit from "@/helpers/imageKit";
+import sanitizeDStorageUrl from "@/helpers/sanitizeDStorageUrl";
 import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
 import getCroppedImg from "@/helpers/cropUtils";
 import errorToast from "@/helpers/errorToast";

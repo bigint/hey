@@ -2,7 +2,7 @@ import { UserPlusIcon } from "@heroicons/react/24/outline";
 import plur from "plur";
 import { NotificationAccountAvatar } from "@/components/Notification/Account";
 import AggregatedNotificationTitle from "@/components/Notification/AggregatedNotificationTitle";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import type { FollowNotificationFragment } from "@/indexer/generated";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 
