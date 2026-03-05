@@ -1,6 +1,6 @@
 import type { Maybe, MetadataAttributeFragment } from "@/indexer/generated";
 
-type Key = "location" | "website" | "x" | "creatorCoinAddress";
+type Key = "location" | "website" | "x";
 
 const getAccountAttribute = (
   key: Key,

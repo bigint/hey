@@ -19,7 +19,6 @@ import type { AccountFragment } from "@/indexer/generated";
 import { useProModalStore } from "@/store/non-persisted/modal/useProModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import ENSBadge from "../Shared/Account/ENSBadge";
-import CreatorCoin from "./CreatorCoin";
 import Followerings from "./Followerings";
 import FollowersYouKnowOverview from "./FollowersYouKnowOverview";
 import AccountMenu from "./Menu";
@@ -189,7 +188,6 @@ const Details = ({
               width={16}
             />
           )}
-          <CreatorCoin account={account} />
         </div>
       </div>
     </div>
