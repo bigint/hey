@@ -4,7 +4,7 @@
 
 To start working with the Hey monorepo, ensure the following tools are installed:
 
-- [Node.js](https://nodejs.org/en/download/) (v18 or higher) – the JavaScript runtime used in this project.
+- [Node.js](https://nodejs.org/en/download/) (v22 or higher) – the JavaScript runtime used in this project.
 - [pnpm](https://pnpm.io/installation) – the package manager used throughout this repository.
 - [Postgres App](https://postgresapp.com/) – the Postgres database used in development.
 
