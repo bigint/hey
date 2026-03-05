@@ -63,8 +63,8 @@ const Copyright = () => {
               <div className="space-y-5">
                 <p className="leading-7">
                   1. Identify the copyrighted work that you claim has been
-                  infringed, or – if multiple copyrighted works are covered by
-                  this Notice – you may provide a representative list of the
+                  infringed, or - if multiple copyrighted works are covered by
+                  this Notice - you may provide a representative list of the
                   copyrighted works that you claim have been infringed.
                 </p>
                 <p className="leading-7">

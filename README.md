@@ -4,9 +4,9 @@
 
 To start working with the Hey monorepo, ensure the following tools are installed:
 
-- [Node.js](https://nodejs.org/en/download/) (v22 or higher) – the JavaScript runtime used in this project.
-- [pnpm](https://pnpm.io/installation) – the package manager used throughout this repository.
-- [Postgres App](https://postgresapp.com/) – the Postgres database used in development.
+- [Node.js](https://nodejs.org/en/download/) (v22 or higher) - the JavaScript runtime used in this project.
+- [pnpm](https://pnpm.io/installation) - the package manager used throughout this repository.
+- [Postgres App](https://postgresapp.com/) - the Postgres database used in development.
 
 ## Installation
 
@@ -58,8 +58,8 @@ The example environment files define the following variables:
 
 #### API (`apps/api/.env.example`)
 
-- `PRIVATE_KEY` – Private key used to sign Lens requests.
-- `SHARED_SECRET` – Token for internal API authorization.
+- `PRIVATE_KEY` - Private key used to sign Lens requests.
+- `SHARED_SECRET` - Token for internal API authorization.
 
 ### Start the Development Server
 
