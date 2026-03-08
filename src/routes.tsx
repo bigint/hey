@@ -21,7 +21,6 @@ import ViewPost from "@/components/Post";
 import Search from "@/components/Search";
 import AccountSettings from "@/components/Settings";
 import BlockedSettings from "@/components/Settings/Blocked";
-import CreatorCoinSettings from "@/components/Settings/CreatorCoin";
 import DeveloperSettings from "@/components/Settings/Developer";
 import FundsSettings from "@/components/Settings/Funds";
 import ManagerSettings from "@/components/Settings/Manager";
@@ -71,7 +70,6 @@ const Routes = () => {
               path="personalize"
             />
             <Route element={<AccountMonetizeSettings />} path="monetize" />
-            <Route element={<CreatorCoinSettings />} path="creatorcoin" />
             <Route element={<ProSettings />} path="pro" />
             <Route element={<RewardsSettings />} path="rewards" />
             <Route element={<BlockedSettings />} path="blocked" />
