@@ -1,6 +1,6 @@
 import { BRAND_COLOR, STATIC_IMAGES_URL, TRANSFORMS } from "@/data/constants";
-import imageKit from "@/helpers//imageKit";
-import sanitizeDStorageUrl from "@/helpers//sanitizeDStorageUrl";
+import imageKit from "@/helpers/imageKit";
+import sanitizeDStorageUrl from "@/helpers/sanitizeDStorageUrl";
 
 interface CoverProps {
   cover: string;

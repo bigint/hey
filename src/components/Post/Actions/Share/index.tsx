@@ -4,7 +4,7 @@ import { AnimateNumber } from "motion-plus-react";
 import { useState } from "react";
 import MenuTransition from "@/components/Shared/MenuTransition";
 import { Spinner, Tooltip } from "@/components/Shared/UI";
-import { isRepost } from "@/helpers//postHelpers";
+import { isRepost } from "@/helpers/postHelpers";
 import cn from "@/helpers/cn";
 import humanize from "@/helpers/humanize";
 import stopEventPropagation from "@/helpers/stopEventPropagation";

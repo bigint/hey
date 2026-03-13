@@ -1,5 +1,5 @@
 import { Image } from "@/components/Shared/UI";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import { defineEditorExtension } from "@/helpers/prosekit/extension";
 import { htmlFromMarkdown } from "@/helpers/prosekit/markdown";
 import useContentChange from "@/hooks/prosekit/useContentChange";

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import Loader from "@/components/Shared/Loader";
 import { H6 } from "@/components/Shared/UI";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { useAccountsBulkQuery } from "@/indexer/generated";
 import { useAccountLinkStore } from "@/store/non-persisted/navigation/useAccountLinkStore";

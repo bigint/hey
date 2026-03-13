@@ -3,7 +3,7 @@ import { NotificationAccountAvatar } from "@/components/Notification/Account";
 import AggregatedNotificationTitle from "@/components/Notification/AggregatedNotificationTitle";
 import Markup from "@/components/Shared/Markup";
 import PostLink from "@/components/Shared/Post/PostLink";
-import getPostData from "@/helpers//getPostData";
+import getPostData from "@/helpers/getPostData";
 import type { MentionNotificationFragment } from "@/indexer/generated";
 
 interface MentionNotificationProps {

@@ -5,7 +5,7 @@ import AggregatedNotificationTitle from "@/components/Notification/AggregatedNot
 import { TipIcon } from "@/components/Shared/Icons/TipIcon";
 import Markup from "@/components/Shared/Markup";
 import PostLink from "@/components/Shared/Post/PostLink";
-import getPostData from "@/helpers//getPostData";
+import getPostData from "@/helpers/getPostData";
 import type { PostActionExecutedNotificationFragment } from "@/indexer/generated";
 
 interface PostActionExecutedNotificationProps {

@@ -1,7 +1,7 @@
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { useMemo, useState } from "react";
 import { Modal, Tooltip } from "@/components/Shared/UI";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import {
   type GroupFragment,
   GroupsOrderBy,

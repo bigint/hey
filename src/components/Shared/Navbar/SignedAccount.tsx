@@ -9,7 +9,7 @@ import SwitchAccount from "@/components/Shared/Navbar/NavItems/SwitchAccount";
 import ThemeSwitch from "@/components/Shared/Navbar/NavItems/ThemeSwitch";
 import YourAccount from "@/components/Shared/Navbar/NavItems/YourAccount";
 import { Image } from "@/components/Shared/UI";
-import getAvatar from "@/helpers//getAvatar";
+import getAvatar from "@/helpers/getAvatar";
 import cn from "@/helpers/cn";
 import type { AccountFragment } from "@/indexer/generated";
 import { useAccountStore } from "@/store/persisted/useAccountStore";

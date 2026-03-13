@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import { Image } from "@/components/Shared/UI";
 import { EditorRegex } from "@/data/regex";
-import sanitizeDStorageUrl from "@/helpers//sanitizeDStorageUrl";
+import sanitizeDStorageUrl from "@/helpers/sanitizeDStorageUrl";
 import cn from "@/helpers/cn";
 import type { EditorExtension } from "@/helpers/prosekit/extension";
 import type { MentionGroup } from "@/hooks/prosekit/useGroupMentionQuery";

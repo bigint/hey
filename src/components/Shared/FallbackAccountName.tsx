@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { memo } from "react";
 import AccountLink from "@/components/Shared/Account/AccountLink";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import cn from "@/helpers/cn";
 import type { AccountFragment } from "@/indexer/generated";
 import Slug from "./Slug";

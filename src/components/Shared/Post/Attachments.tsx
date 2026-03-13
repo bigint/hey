@@ -4,7 +4,7 @@ import { memo, useState } from "react";
 import Audio from "@/components/Shared/Audio";
 import { Image, LightBox } from "@/components/Shared/UI";
 import { TRANSFORMS } from "@/data/constants";
-import imageKit from "@/helpers//imageKit";
+import imageKit from "@/helpers/imageKit";
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { MetadataAsset } from "@/types/misc";

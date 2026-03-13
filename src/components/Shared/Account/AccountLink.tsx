@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Link } from "react-router";
-import getAccount from "@/helpers//getAccount";
+import getAccount from "@/helpers/getAccount";
 import type { AccountFragment } from "@/indexer/generated";
 import { useAccountLinkStore } from "@/store/non-persisted/navigation/useAccountLinkStore";
 

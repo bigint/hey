@@ -3,7 +3,7 @@ import type {
   MetadataAttribute
 } from "@lens-protocol/metadata";
 import { MetadataAttributeType } from "@lens-protocol/metadata";
-import trimify from "@/helpers//trimify";
+import trimify from "@/helpers/trimify";
 
 type ExistingAttribute = {
   key: string;
