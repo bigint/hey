@@ -8,7 +8,7 @@ export const createApolloClient = (authLink?: ApolloLink) =>
   new ApolloClient({
     cache,
     devtools: {
-      enabled: true
+      enabled: import.meta.env.DEV
     },
     link: authLink
       ? from([authLink, retryLink, httpLink])

@@ -100,6 +100,8 @@ const Login = ({ setHasAccounts }: LoginProps) => {
       });
 
       if (!challenge?.data?.challenge?.text) {
+        setIsSubmitting(false);
+        setLoggingInAccountId(null);
         return toast.error(ERRORS.SomethingWentWrong);
       }
 

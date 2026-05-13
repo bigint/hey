@@ -1,11 +1,10 @@
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { useIsClient } from "@uidotdev/usehooks";
-import { memo, useCallback, useEffect } from "react";
+import { lazy, memo, Suspense, useCallback, useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import { Toaster, type ToasterProps } from "sonner";
 import FullPageLoader from "@/components/Shared/FullPageLoader";
 import GlobalAlerts from "@/components/Shared/GlobalAlerts";
-import GlobalModals from "@/components/Shared/GlobalModals";
 import Navbar from "@/components/Shared/Navbar";
 import BottomNavigation from "@/components/Shared/Navbar/BottomNavigation";
 import { Spinner } from "@/components/Shared/UI";
@@ -15,6 +14,8 @@ import { useMeQuery } from "@/indexer/generated";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { hydrateAuthTokens, signOut } from "@/store/persisted/useAuthStore";
 import ReloadTabsWatcher from "./ReloadTabsWatcher";
+
+const GlobalModals = lazy(() => import("@/components/Shared/GlobalModals"));
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -61,7 +62,9 @@ const Layout = () => {
           style: { boxShadow: "none", fontSize: "16px" }
         }}
       />
-      <GlobalModals />
+      <Suspense fallback={null}>
+        <GlobalModals />
+      </Suspense>
       <GlobalAlerts />
       <ReloadTabsWatcher />
       <div className="mx-auto flex w-full max-w-6xl items-start gap-x-8 px-0 md:px-5">

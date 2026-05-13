@@ -36,6 +36,10 @@ const useUploadAttachments = () => {
 
       try {
         const uploaded = await uploadToIPFS(compressedFiles);
+        if (uploaded.length !== previewAttachments.length) {
+          throw new Error("Some attachments failed to upload");
+        }
+
         const result = uploaded.map((file, index) => ({
           ...previewAttachments[index],
           mimeType: file.mimeType,

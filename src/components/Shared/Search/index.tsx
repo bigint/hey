@@ -67,7 +67,9 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
       const search = query.trim();
       umami.track("search");
       if (pathname === "/search") {
-        navigate(`/search?q=${encodeURIComponent(search)}&type=${type}`);
+        navigate(
+          `/search?q=${encodeURIComponent(search)}&type=${type ?? "accounts"}`
+        );
       } else {
         navigate(`/search?q=${encodeURIComponent(search)}&type=accounts`);
       }
@@ -81,20 +83,34 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
   }, []);
 
   useEffect(() => {
-    if (pathname !== "/search" && showDropdown && debouncedSearchText) {
-      const request: AccountsRequest = {
-        filter: { searchBy: { localNameQuery: debouncedSearchText } },
-        orderBy: AccountsOrderBy.BestMatch,
-        pageSize: PageSize.Fifty
-      };
-
-      searchAccounts({ variables: { request } }).then((res) => {
-        if (res.data?.accounts?.items) {
-          setAccounts(res.data.accounts.items);
-        }
-      });
+    if (pathname === "/search" || !showDropdown) {
+      setAccounts([]);
+      return;
     }
-  }, [debouncedSearchText]);
+
+    const searchText = debouncedSearchText.trim();
+    if (!searchText) {
+      setAccounts([]);
+      return;
+    }
+
+    let cancelled = false;
+    const request: AccountsRequest = {
+      filter: { searchBy: { localNameQuery: searchText } },
+      orderBy: AccountsOrderBy.BestMatch,
+      pageSize: PageSize.Fifty
+    };
+
+    searchAccounts({ variables: { request } }).then((res) => {
+      if (!cancelled) {
+        setAccounts(res.data?.accounts?.items ?? []);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [debouncedSearchText, pathname, searchAccounts, showDropdown]);
 
   return (
     <div className="w-full">

@@ -8,7 +8,10 @@ import generateVideoThumbnails from "@/helpers/generateVideoThumbnails";
 import getFileFromDataURL from "@/helpers/getFileFromDataURL";
 import { uploadFileToIPFS } from "@/helpers/uploadToIPFS";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
-import { usePostVideoStore } from "@/store/non-persisted/post/usePostVideoStore";
+import {
+  DEFAULT_VIDEO_THUMBNAIL,
+  usePostVideoStore
+} from "@/store/non-persisted/post/usePostVideoStore";
 
 const DEFAULT_THUMBNAIL_INDEX = 0;
 export const THUMBNAIL_GENERATE_COUNT = 4;
@@ -33,6 +36,7 @@ const ChooseThumbnail = () => {
   const inputId = useId();
   const thumbnailsRef = useRef<Thumbnail[]>([]);
   const [thumbnails, setThumbnails] = useState<Thumbnail[]>([]);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [imageUploading, setImageUploading] = useState(false);
   const [selectedThumbnailIndex, setSelectedThumbnailIndex] = useState(-1);
   const { attachments } = usePostAttachmentStore();
@@ -52,17 +56,20 @@ const ChooseThumbnail = () => {
 
   const uploadThumbnailToStorageNode = async (fileToUpload: File) => {
     setVideoThumbnail({ ...videoThumbnail, uploading: true });
-    const result = await uploadFileToIPFS(fileToUpload);
-    if (!result.uri) {
-      toast.error("Failed to upload thumbnail");
-    }
-    setVideoThumbnail({
-      mimeType: fileToUpload.type || "image/jpeg",
-      uploading: false,
-      url: result.uri
-    });
+    try {
+      const result = await uploadFileToIPFS(fileToUpload);
+      setVideoThumbnail({
+        mimeType: fileToUpload.type || "image/jpeg",
+        uploading: false,
+        url: result.uri
+      });
 
-    return result;
+      return result;
+    } catch (error) {
+      setVideoThumbnail(DEFAULT_VIDEO_THUMBNAIL);
+      toast.error("Failed to upload thumbnail");
+      throw error;
+    }
   };
 
   const handleSelectThumbnail = (index: number, thumbnailList = thumbnails) => {
@@ -79,19 +86,23 @@ const ChooseThumbnail = () => {
         thumbnail.blobUrl,
         "thumbnail.jpeg",
         async (file: File) => {
-          const result = await uploadThumbnailToStorageNode(file);
-          setThumbnails((current) =>
-            current.map((thumbnail, i) =>
+          try {
+            const result = await uploadThumbnailToStorageNode(file);
+            setThumbnails((current) =>
+              current.map((thumbnail, i) =>
+                i === index
+                  ? { ...thumbnail, decentralizedUrl: result.uri }
+                  : thumbnail
+              )
+            );
+            thumbnailsRef.current = thumbnailsRef.current.map((thumbnail, i) =>
               i === index
                 ? { ...thumbnail, decentralizedUrl: result.uri }
                 : thumbnail
-            )
-          );
-          thumbnailsRef.current = thumbnailsRef.current.map((thumbnail, i) =>
-            i === index
-              ? { ...thumbnail, decentralizedUrl: result.uri }
-              : thumbnail
-          );
+            );
+          } catch {
+            setSelectedThumbnailIndex(-1);
+          }
         }
       );
     } else {
@@ -105,17 +116,28 @@ const ChooseThumbnail = () => {
 
   const generateThumbnails = async (fileToGenerate: File) => {
     try {
+      setIsGenerating(true);
       const thumbnailArray = await generateVideoThumbnails(
         fileToGenerate,
         THUMBNAIL_GENERATE_COUNT
       );
+      if (!thumbnailArray.length) {
+        throw new Error("Could not generate thumbnails");
+      }
+
       const thumbnailList: Thumbnail[] = [];
       for (const thumbnailBlob of thumbnailArray) {
         thumbnailList.push({ blobUrl: thumbnailBlob, decentralizedUrl: "" });
       }
       setThumbnailList(thumbnailList);
       handleSelectThumbnail(DEFAULT_THUMBNAIL_INDEX, thumbnailList);
-    } catch {}
+    } catch {
+      setThumbnailList([]);
+      setVideoThumbnail(DEFAULT_VIDEO_THUMBNAIL);
+      toast.error("Failed to generate video thumbnails");
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   useEffect(() => {
@@ -178,7 +200,12 @@ const ChooseThumbnail = () => {
             </>
           )}
         </label>
-        {thumbnails.length ? null : <ThumbnailsShimmer />}
+        {!thumbnails.length && isGenerating ? <ThumbnailsShimmer /> : null}
+        {!thumbnails.length && !isGenerating ? (
+          <div className="flex h-24 items-center px-2 text-gray-500 text-sm">
+            Upload a thumbnail to continue.
+          </div>
+        ) : null}
         {thumbnails.map(({ blobUrl, decentralizedUrl }, index) => {
           const isSelected = selectedThumbnailIndex === index;
           const isUploaded = decentralizedUrl === videoThumbnail.url;

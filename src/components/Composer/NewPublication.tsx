@@ -14,6 +14,7 @@ import { ERRORS } from "@/data/errors";
 import getAccount from "@/helpers//getAccount";
 import collectActionParams from "@/helpers/collectActionParams";
 import errorToast from "@/helpers/errorToast";
+import generateUUID from "@/helpers/generateUUID";
 import getMentions from "@/helpers/getMentions";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import useCreatePost from "@/hooks/useCreatePost";
@@ -67,7 +68,12 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
   const { audioPost, setAudioPost } = usePostAudioStore();
 
   // Video store
-  const { setVideoThumbnail, videoThumbnail } = usePostVideoStore();
+  const {
+    setVideoDurationInSeconds,
+    setVideoThumbnail,
+    videoDurationInSeconds,
+    videoThumbnail
+  } = usePostVideoStore();
 
   // Attachment store
   const { addAttachments, attachments, isUploading, setAttachments } =
@@ -96,6 +102,12 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
   const isQuote = Boolean(quotedPost);
   const hasAudio = attachments[0]?.type === "Audio";
   const hasVideo = attachments[0]?.type === "Video";
+  const videoDuration = Number.parseFloat(videoDurationInSeconds);
+  const hasValidVideoMetadata =
+    !hasVideo ||
+    (Boolean(videoThumbnail.url) &&
+      Number.isFinite(videoDuration) &&
+      videoDuration > 0);
 
   const reset = () => {
     editor?.setMarkdown("");
@@ -106,6 +118,7 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
     setEditingPost(undefined);
     setRules(undefined);
     setVideoThumbnail(DEFAULT_VIDEO_THUMBNAIL);
+    setVideoDurationInSeconds("");
     setAudioPost(DEFAULT_AUDIO_POST);
     setLicense(null);
     resetCollectSettings();
@@ -189,6 +202,13 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
         );
       }
 
+      if (!hasValidVideoMetadata) {
+        setIsSubmitting(false);
+        return setPostContentError(
+          "Add a valid video thumbnail before posting."
+        );
+      }
+
       setPostContentError("");
 
       const baseMetadata = {
@@ -199,6 +219,10 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
       };
 
       const metadata = getMetadata({ baseMetadata });
+      if (!metadata) {
+        throw new Error(ERRORS.SomethingWentWrong);
+      }
+
       const contentUri = await uploadMetadata(metadata);
 
       if (editingPost) {
@@ -232,6 +256,7 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
 
   const setGifAttachment = (gif: IGif) => {
     const attachment: NewAttachment = {
+      id: generateUUID(),
       mimeType: "image/gif",
       previewUri: gif.images.original.url,
       type: "Image",

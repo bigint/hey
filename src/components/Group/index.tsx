@@ -25,12 +25,12 @@ const ViewGroup = () => {
     return <GroupPageShimmer />;
   }
 
-  if (!data?.group) {
-    return <Custom404 />;
-  }
-
   if (error) {
     return <Custom500 />;
+  }
+
+  if (!data?.group) {
+    return <Custom404 />;
   }
 
   const group = data.group;

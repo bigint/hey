@@ -15,8 +15,19 @@ import { useReportPostModalStore } from "@/store/non-persisted/modal/useReportPo
 import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
 import { useSwitchAccountModalStore } from "@/store/non-persisted/modal/useSwitchAccountModalStore";
+import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
+import {
+  DEFAULT_AUDIO_POST,
+  usePostAudioStore
+} from "@/store/non-persisted/post/usePostAudioStore";
+import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
+import { usePostRulesStore } from "@/store/non-persisted/post/usePostRulesStore";
 import { usePostStore } from "@/store/non-persisted/post/usePostStore";
+import {
+  DEFAULT_VIDEO_THUMBNAIL,
+  usePostVideoStore
+} from "@/store/non-persisted/post/usePostVideoStore";
 import Auth from "./Auth";
 
 const GlobalModals = () => {
@@ -27,6 +38,11 @@ const GlobalModals = () => {
   const { editingPost, setEditingPost, setQuotedPost, setPostContent } =
     usePostStore();
   const { setAttachments } = usePostAttachmentStore();
+  const { setAudioPost } = usePostAudioStore();
+  const { setLicense } = usePostLicenseStore();
+  const { setRules } = usePostRulesStore();
+  const { setVideoDurationInSeconds, setVideoThumbnail } = usePostVideoStore();
+  const { reset: resetCollectSettings } = useCollectActionStore();
   const { authModalType, showAuthModal, setShowAuthModal } =
     useAuthModalStore();
   const {
@@ -52,6 +68,20 @@ const GlobalModals = () => {
         ? "Signup"
         : null
       : "Login";
+
+  const resetNewPostModalState = () => {
+    setShowNewPostModal(false);
+    setPostContent("");
+    setEditingPost(undefined);
+    setQuotedPost(undefined);
+    setAttachments([]);
+    setRules(undefined);
+    setVideoThumbnail(DEFAULT_VIDEO_THUMBNAIL);
+    setVideoDurationInSeconds("");
+    setAudioPost(DEFAULT_AUDIO_POST);
+    setLicense(null);
+    resetCollectSettings();
+  };
 
   return (
     <>
@@ -85,13 +115,7 @@ const GlobalModals = () => {
         <Auth />
       </Modal>
       <Modal
-        onClose={() => {
-          setShowNewPostModal(false);
-          setPostContent("");
-          setEditingPost(undefined);
-          setQuotedPost(undefined);
-          setAttachments([]);
-        }}
+        onClose={resetNewPostModalState}
         show={showNewPostModal}
         size="md"
         title={editingPost ? "Edit post" : "Create post"}

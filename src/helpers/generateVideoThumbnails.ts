@@ -3,7 +3,7 @@ const generateVideoThumbnails = async (
   count: number
 ): Promise<string[]> => {
   if (!file.size) {
-    return [];
+    throw new Error("Video file is empty");
   }
 
   const url = URL.createObjectURL(file);
@@ -19,7 +19,7 @@ const generateVideoThumbnails = async (
         canvas.height = video.videoHeight;
         resolve();
       };
-      video.onerror = () => reject();
+      video.onerror = () => reject(new Error("Failed to load video"));
     });
 
     let queue: Promise<void> = Promise.resolve();
@@ -44,8 +44,6 @@ const generateVideoThumbnails = async (
     return await Promise.all(
       Array.from({ length: count }).map((_, i) => seekAndCapture(step * i))
     );
-  } catch {
-    return [];
   } finally {
     video.remove();
     canvas.remove();

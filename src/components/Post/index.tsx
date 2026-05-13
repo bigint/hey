@@ -76,12 +76,12 @@ const ViewPost = () => {
     return <PostPageShimmer isQuotes={showQuotes} />;
   }
 
-  if (!post) {
-    return <Custom404 />;
-  }
-
   if (error) {
     return <Custom500 />;
+  }
+
+  if (!post) {
+    return <Custom404 />;
   }
 
   const targetPost = isRepost(post) ? post.repostOf : post;

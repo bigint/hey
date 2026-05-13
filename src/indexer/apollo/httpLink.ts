@@ -3,8 +3,6 @@ import { LENS_API_URL } from "@/data/constants";
 
 const httpLink = new HttpLink({
   fetch,
-  fetchOptions: "no-cors",
-  headers: { origin: "https://hey.xyz" },
   uri: LENS_API_URL
 });
 

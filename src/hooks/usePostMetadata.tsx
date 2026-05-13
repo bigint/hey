@@ -21,11 +21,30 @@ const usePostMetadata = () => {
   const { license } = usePostLicenseStore();
   const { attachments } = usePostAttachmentStore();
 
+  const assertUploadedAttachment = (
+    attachment: (typeof attachments)[number] | undefined
+  ) => {
+    if (!attachment?.uri || !attachment.mimeType) {
+      throw new Error("Please wait for attachments to finish uploading.");
+    }
+
+    return { ...attachment, uri: attachment.uri };
+  };
+
   const formatAttachments = () =>
-    attachments.slice(1).map(({ mimeType, uri }) => ({
-      item: uri,
-      type: mimeType
+    attachments.slice(1).map((attachment) => ({
+      item: assertUploadedAttachment(attachment).uri,
+      type: attachment.mimeType
     }));
+
+  const getVideoDuration = () => {
+    const duration = Number.parseFloat(videoDurationInSeconds);
+    if (!videoThumbnail.url || !Number.isFinite(duration) || duration <= 0) {
+      throw new Error("Add a valid video thumbnail before posting.");
+    }
+
+    return duration;
+  };
 
   const getMetadata = useCallback(
     ({ baseMetadata }: UsePostMetadataProps) => {
@@ -42,6 +61,8 @@ const usePostMetadata = () => {
       }
 
       const attachmentsToBeUploaded = formatAttachments();
+      const uploadedPrimaryAttachment =
+        assertUploadedAttachment(primaryAttachment);
 
       if (isImage) {
         return image({
@@ -51,8 +72,8 @@ const usePostMetadata = () => {
           }),
           image: {
             ...(license && { license }),
-            item: primaryAttachment.uri,
-            type: primaryAttachment.mimeType
+            item: uploadedPrimaryAttachment.uri,
+            type: uploadedPrimaryAttachment.mimeType
           }
         });
       }
@@ -68,8 +89,8 @@ const usePostMetadata = () => {
               artist: audioPost.artist
             }),
             cover: audioPost.cover,
-            item: primaryAttachment.uri,
-            type: primaryAttachment.mimeType,
+            item: uploadedPrimaryAttachment.uri,
+            type: uploadedPrimaryAttachment.mimeType,
             ...(license && { license })
           }
         });
@@ -83,9 +104,9 @@ const usePostMetadata = () => {
           }),
           video: {
             cover: videoThumbnail.url,
-            duration: Number.parseInt(videoDurationInSeconds, 10),
-            item: primaryAttachment.uri,
-            type: primaryAttachment.mimeType,
+            duration: getVideoDuration(),
+            item: uploadedPrimaryAttachment.uri,
+            type: uploadedPrimaryAttachment.mimeType,
             ...(license && { license })
           }
         });

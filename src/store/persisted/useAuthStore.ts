@@ -26,6 +26,7 @@ const { store } = createPersistedTrackedStore<State>(
     signIn: ({ accessToken, refreshToken }) =>
       set({ accessToken, refreshToken }),
     signOut: async () => {
+      set({ accessToken: null, refreshToken: null });
       clearLocalStorage();
     }
   }),

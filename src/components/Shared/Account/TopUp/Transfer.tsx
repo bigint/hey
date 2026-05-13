@@ -76,6 +76,13 @@ const Transfer = ({ token }: TransferProps) => {
   useEffect(() => {
     if (transactionReceipt?.status === "success") {
       onCompleted();
+      return;
+    }
+
+    if (transactionReceipt?.status === "reverted") {
+      setIsSubmitting(false);
+      setTxHash(null);
+      toast.error("Transfer failed");
     }
   }, [transactionReceipt]);
 

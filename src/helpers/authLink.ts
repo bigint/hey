@@ -28,7 +28,10 @@ const authLink = new ApolloLink((operation, forward) => {
         });
         return toPromise(forward(operation));
       })
-      .catch(() => toPromise(forward(operation)))
+      .catch((error) => {
+        signOut();
+        throw error;
+      })
   );
 });
 
