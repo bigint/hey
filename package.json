@@ -45,7 +45,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-easy-crop": "^5.5.3",
-    "react-helmet-async": "^2.0.5",
+    "react-helmet-async": "^3.0.0",
     "react-hook-form": "^7.71.1",
     "react-hotkeys-hook": "^5.2.1",
     "react-markdown": "^10.1.0",
