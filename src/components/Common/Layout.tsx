@@ -1,7 +1,7 @@
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { useIsClient } from "@uidotdev/usehooks";
-import { lazy, memo, Suspense, useCallback, useEffect } from "react";
-import { Outlet, useLocation } from "react-router";
+import { lazy, memo, Suspense, useCallback, useEffect, useRef } from "react";
+import { Outlet, useLocation, useNavigationType } from "react-router";
 import { Toaster, type ToasterProps } from "sonner";
 import FullPageLoader from "@/components/Shared/FullPageLoader";
 import GlobalAlerts from "@/components/Shared/GlobalAlerts";
@@ -17,16 +17,53 @@ import ReloadTabsWatcher from "./ReloadTabsWatcher";
 
 const GlobalModals = lazy(() => import("@/components/Shared/GlobalModals"));
 
+const scrollPositions = new Map<string, number>();
+
 const Layout = () => {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
   const { theme } = useTheme();
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const isMounted = useIsClient();
   const { accessToken } = hydrateAuthTokens();
+  const previousPathRef = useRef(pathname);
 
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleSave = () => {
+      scrollPositions.set(previousPathRef.current, window.scrollY);
+    };
+    window.addEventListener("beforeunload", handleSave);
+    return () => window.removeEventListener("beforeunload", handleSave);
+  }, []);
+
+  useEffect(() => {
+    const previousPath = previousPathRef.current;
+    if (previousPath !== pathname) {
+      scrollPositions.set(previousPath, window.scrollY);
+    }
+
+    if (navigationType === "POP" && scrollPositions.has(pathname)) {
+      const target = scrollPositions.get(pathname) ?? 0;
+      const restore = () => window.scrollTo(0, target);
+      restore();
+      const raf = requestAnimationFrame(restore);
+      const timeout = window.setTimeout(restore, 80);
+      previousPathRef.current = pathname;
+      return () => {
+        cancelAnimationFrame(raf);
+        window.clearTimeout(timeout);
+      };
+    }
+
     window.scrollTo(0, 0);
-  }, [pathname]);
+    previousPathRef.current = pathname;
+  }, [pathname, navigationType]);
 
   const onError = useCallback(() => {
     signOut();
