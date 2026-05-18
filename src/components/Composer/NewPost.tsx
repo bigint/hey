@@ -31,7 +31,7 @@ const NewPost = ({ feed }: NewPostProps) => {
       handleOpenComposer();
       setPostContent(content);
     }
-  }, [text, url, via]);
+  }, [text, url, via, setPostContent]);
 
   if (showComposer) {
     return <NewPublication feed={feed} />;

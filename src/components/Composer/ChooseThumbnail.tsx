@@ -34,6 +34,7 @@ const revokeThumbnailBlobUrls = (
 
 const ChooseThumbnail = () => {
   const inputId = useId();
+  const isMountedRef = useRef(true);
   const thumbnailsRef = useRef<Thumbnail[]>([]);
   const [thumbnails, setThumbnails] = useState<Thumbnail[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -88,6 +89,9 @@ const ChooseThumbnail = () => {
         async (file: File) => {
           try {
             const result = await uploadThumbnailToStorageNode(file);
+            if (!isMountedRef.current) {
+              return;
+            }
             setThumbnails((current) =>
               current.map((thumbnail, i) =>
                 i === index
@@ -101,7 +105,9 @@ const ChooseThumbnail = () => {
                 : thumbnail
             );
           } catch {
-            setSelectedThumbnailIndex(-1);
+            if (isMountedRef.current) {
+              setSelectedThumbnailIndex(-1);
+            }
           }
         }
       );
@@ -141,10 +147,12 @@ const ChooseThumbnail = () => {
   };
 
   useEffect(() => {
+    isMountedRef.current = true;
     if (file) {
       generateThumbnails(file);
     }
     return () => {
+      isMountedRef.current = false;
       setSelectedThumbnailIndex(-1);
       revokeThumbnailBlobUrls(thumbnailsRef.current);
       thumbnailsRef.current = [];

@@ -40,6 +40,10 @@ const generateVideoThumbnails = async (
       return result;
     };
 
+    if (!Number.isFinite(video.duration) || video.duration <= 0) {
+      throw new Error("Invalid video duration");
+    }
+
     const step = video.duration / count;
     return await Promise.all(
       Array.from({ length: count }).map((_, i) => seekAndCapture(step * i))

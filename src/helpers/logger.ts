@@ -11,7 +11,7 @@ const error = (...args: unknown[]): void => {
 };
 
 const debug = (...args: unknown[]): void => {
-  if (process.env.NODE_ENV !== "production") {
+  if (import.meta.env.DEV) {
     console.debug(...args);
   }
 };
