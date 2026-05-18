@@ -26,43 +26,43 @@ const Layout = () => {
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const isMounted = useIsClient();
   const { accessToken } = hydrateAuthTokens();
-  const previousPathRef = useRef(pathname);
+  const pathnameRef = useRef(pathname);
+  pathnameRef.current = pathname;
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
-  }, []);
-
-  useEffect(() => {
-    const handleSave = () => {
-      scrollPositions.set(previousPathRef.current, window.scrollY);
+    const handleScroll = () => {
+      scrollPositions.set(pathnameRef.current, window.scrollY);
     };
-    window.addEventListener("beforeunload", handleSave);
-    return () => window.removeEventListener("beforeunload", handleSave);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    const previousPath = previousPathRef.current;
-    if (previousPath !== pathname) {
-      scrollPositions.set(previousPath, window.scrollY);
-    }
-
-    if (navigationType === "POP" && scrollPositions.has(pathname)) {
-      const target = scrollPositions.get(pathname) ?? 0;
-      const restore = () => window.scrollTo(0, target);
-      restore();
-      const raf = requestAnimationFrame(restore);
-      const timeout = window.setTimeout(restore, 80);
-      previousPathRef.current = pathname;
+    const saved = scrollPositions.get(pathname);
+    if (navigationType === "POP" && saved !== undefined && saved > 0) {
+      let cancelled = false;
+      const start = performance.now();
+      const tryRestore = () => {
+        if (cancelled) return;
+        const reachable =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const target = Math.min(saved, Math.max(reachable, 0));
+        window.scrollTo(0, target);
+        const reachedSaved = Math.abs(window.scrollY - saved) < 2;
+        const elapsed = performance.now() - start;
+        if (!reachedSaved && elapsed < 3000) {
+          requestAnimationFrame(tryRestore);
+        }
+      };
+      requestAnimationFrame(tryRestore);
       return () => {
-        cancelAnimationFrame(raf);
-        window.clearTimeout(timeout);
+        cancelled = true;
       };
     }
-
     window.scrollTo(0, 0);
-    previousPathRef.current = pathname;
   }, [pathname, navigationType]);
 
   const onError = useCallback(() => {
