@@ -117,7 +117,7 @@ const GlobalModals = () => {
       <Modal
         onClose={resetNewPostModalState}
         show={showNewPostModal}
-        size="md"
+        size="sm"
         title={editingPost ? "Edit post" : "Create post"}
       >
         <NewPublication className="!rounded-b-xl !rounded-t-none border-none" />
