@@ -13,6 +13,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { useMeQuery } from "@/indexer/generated";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { hydrateAuthTokens, signOut } from "@/store/persisted/useAuthStore";
+import AmbientBackground from "./AmbientBackground";
 import ReloadTabsWatcher from "./ReloadTabsWatcher";
 
 const GlobalModals = lazy(() => import("@/components/Shared/GlobalModals"));
@@ -149,6 +150,7 @@ const Layout = () => {
 
   return (
     <>
+      <AmbientBackground />
       <Toaster
         icons={{
           error: <XCircleIcon className="size-5" />,
