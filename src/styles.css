@@ -56,6 +56,27 @@
   }
 }
 
+@keyframes ambient-aurora-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ambient-hero-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
 @layer base {
   :root {
     @apply font-sofia-pro text-black dark:text-white;
@@ -135,16 +156,74 @@
     opacity: 0.55;
   }
 
-  .ambient-noise {
+  .ambient-aurora {
+    position: absolute;
+    inset: -30%;
+    background:
+      conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        rgba(251, 58, 93, 0.12) 60deg,
+        transparent 120deg,
+        rgba(255, 161, 173, 0.1) 200deg,
+        transparent 260deg,
+        rgba(233, 21, 70, 0.11) 320deg,
+        transparent 360deg
+      );
+    filter: blur(90px);
+    opacity: 0.85;
+    will-change: transform;
+  }
+
+  .ambient-hero-glow {
+    position: absolute;
+    top: -25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 900px;
+    height: 60vh;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(251, 58, 93, 0.35) 0%,
+      rgba(255, 161, 173, 0.18) 35%,
+      rgba(251, 58, 93, 0) 70%
+    );
+    filter: blur(40px);
+    opacity: 0.7;
+    will-change: opacity, transform;
+  }
+
+  .ambient-spotlight {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(
-      rgba(0, 0, 0, 0.04) 1px,
-      transparent 1px
+    background: radial-gradient(
+      520px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(251, 58, 93, 0.2),
+      rgba(251, 58, 93, 0.06) 25%,
+      transparent 55%
     );
-    background-size: 3px 3px;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: screen;
+    will-change: background;
+  }
+
+  .ambient-noise-svg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ambient-aurora {
+      animation: ambient-aurora-spin 90s linear infinite;
+    }
+
+    .ambient-hero-glow {
+      animation: ambient-hero-breathe 12s ease-in-out infinite;
+    }
   }
 
   .dark .ambient-orb-1 {
@@ -171,13 +250,44 @@
     );
   }
 
-  .dark .ambient-noise {
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px
+  .dark .ambient-aurora {
+    background:
+      conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        rgba(251, 58, 93, 0.22) 60deg,
+        transparent 120deg,
+        rgba(255, 161, 173, 0.14) 200deg,
+        transparent 260deg,
+        rgba(233, 21, 70, 0.2) 320deg,
+        transparent 360deg
+      );
+    opacity: 0.95;
+  }
+
+  .dark .ambient-hero-glow {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(251, 58, 93, 0.45) 0%,
+      rgba(233, 21, 70, 0.22) 35%,
+      rgba(251, 58, 93, 0) 70%
     );
+    opacity: 0.85;
     mix-blend-mode: screen;
-    opacity: 0.4;
+  }
+
+  .dark .ambient-spotlight {
+    background: radial-gradient(
+      520px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(251, 58, 93, 0.32),
+      rgba(255, 161, 173, 0.1) 25%,
+      transparent 55%
+    );
+  }
+
+  .dark .ambient-noise-svg {
+    opacity: 0.12;
+    mix-blend-mode: soft-light;
   }
 
   .shimmer {
