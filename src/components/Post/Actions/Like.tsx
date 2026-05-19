@@ -74,9 +74,7 @@ const Like = ({ post, showCount }: LikeProps) => {
     update: updateCache
   });
 
-  const handleCreateLike = async (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleCreateLike = async () => {
     if (!currentAccount) {
       return toast.error(ERRORS.SignWallet);
     }
@@ -95,16 +93,6 @@ const Like = ({ post, showCount }: LikeProps) => {
 
     increment();
     umami.track("like_post");
-
-    const rect = event.currentTarget.getBoundingClientRect();
-    window.dispatchEvent(
-      new CustomEvent("hey:like", {
-        detail: {
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2
-        }
-      })
-    );
 
     return await addReaction({
       variables: {
