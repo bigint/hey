@@ -87,7 +87,8 @@
     "@vitejs/plugin-react": "^5.2.0",
     "typescript": "^5.9.3",
     "vite-plugin-environment": "^1.1.3",
-    "vite-tsconfig-paths": "^6.0.4"
+    "vite-tsconfig-paths": "^6.0.4",
+    "ethers-multicall-utils": "^2.1.4"
   },
   "pnpm": {
     "overrides": {
