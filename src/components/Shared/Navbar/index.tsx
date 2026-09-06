@@ -4,6 +4,7 @@ import {
   BookmarkIcon as BookmarkOutline,
   GlobeAltIcon as GlobeOutline,
   HomeIcon as HomeOutline,
+  PencilSquareIcon,
   UserCircleIcon,
   UserGroupIcon as UserGroupOutline
 } from "@heroicons/react/24/outline";
@@ -36,6 +37,7 @@ import {
   TimelineHighlightsDocument
 } from "@/indexer/generated";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
+import { useNewPostModalStore } from "@/store/non-persisted/modal/useNewPostModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useNotificationStore } from "@/store/persisted/useNotificationStore";
 import SignedAccount from "./SignedAccount";
@@ -163,6 +165,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const { currentAccount } = useAccountStore();
   const { setShowAuthModal } = useAuthModalStore();
+  const { setShow: setShowNewPostModal } = useNewPostModalStore();
 
   const handleLogoClick = useCallback(
     (e: MouseEvent<HTMLAnchorElement>) => {
@@ -178,6 +181,11 @@ const Navbar = () => {
     setShowAuthModal(true);
   }, []);
 
+  const handleNewPostClick = useCallback(() => {
+    umami.track("open_composer");
+    setShowNewPostModal(true);
+  }, []);
+
   return (
     <aside className="sticky top-5 mt-5 hidden w-10 shrink-0 flex-col items-center gap-y-5 md:flex">
       <Link onClick={handleLogoClick} to="/">
@@ -191,7 +199,19 @@ const Navbar = () => {
       </Link>
       <NavItems isLoggedIn={!!currentAccount} />
       {currentAccount ? (
-        <SignedAccount />
+        <>
+          <SignedAccount />
+          <Tooltip content="Create post">
+            <button
+              aria-label="Create post"
+              className="flex size-9 items-center justify-center rounded-full bg-brand-500 text-white shadow-sm transition-colors hover:bg-brand-600"
+              onClick={handleNewPostClick}
+              type="button"
+            >
+              <PencilSquareIcon className="size-5" />
+            </button>
+          </Tooltip>
+        </>
       ) : (
         <button onClick={handleAuthClick} type="button">
           <Tooltip content="Login">

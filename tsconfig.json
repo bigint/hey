@@ -3,6 +3,7 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
+    "ignoreDeprecations": "5.0",
     "composite": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

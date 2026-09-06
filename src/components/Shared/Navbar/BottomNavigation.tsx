@@ -3,7 +3,8 @@ import {
   BellIcon,
   GlobeAltIcon as GlobeOutline,
   HomeIcon,
-  MagnifyingGlassIcon
+  MagnifyingGlassIcon,
+  PencilSquareIcon
 } from "@heroicons/react/24/outline";
 import {
   BellIcon as BellIconSolid,
@@ -20,6 +21,7 @@ import {
   NotificationsDocument
 } from "@/indexer/generated";
 import { useMobileDrawerModalStore } from "@/store/non-persisted/modal/useMobileDrawerModalStore";
+import { useNewPostModalStore } from "@/store/non-persisted/modal/useNewPostModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useNotificationStore } from "@/store/persisted/useNotificationStore";
 import MobileDrawerMenu from "./MobileDrawerMenu";
@@ -62,10 +64,16 @@ const BottomNavigation = () => {
   const client = useApolloClient();
   const { show: showMobileDrawer, setShow: setShowMobileDrawer } =
     useMobileDrawerModalStore();
+  const { setShow: setShowNewPostModal } = useNewPostModalStore();
   const hasNewNotifications = useHasNewNotifications();
   const { incrementNotificationRefreshSignal } = useNotificationStore();
 
   const handleAccountClick = () => setShowMobileDrawer(true);
+
+  const handleNewPostClick = () => {
+    umami.track("open_composer");
+    setShowNewPostModal(true);
+  };
 
   const handleNavigationClick = async (path: string, e: MouseEvent) => {
     if (path === "/" && pathname === "/") {
@@ -128,18 +136,28 @@ const BottomNavigation = () => {
           />
         ))}
         {currentAccount && (
-          <button
-            aria-label="Your account"
-            className="m-auto h-fit"
-            onClick={handleAccountClick}
-            type="button"
-          >
-            <Image
-              alt={currentAccount.address}
-              className="m-0.5 size-6 rounded-full border border-gray-200 dark:border-gray-700"
-              src={getAvatar(currentAccount)}
-            />
-          </button>
+          <>
+            <button
+              aria-label="Create post"
+              className="m-auto h-fit"
+              onClick={handleNewPostClick}
+              type="button"
+            >
+              <PencilSquareIcon className="size-6" />
+            </button>
+            <button
+              aria-label="Your account"
+              className="m-auto h-fit"
+              onClick={handleAccountClick}
+              type="button"
+            >
+              <Image
+                alt={currentAccount.address}
+                className="m-0.5 size-6 rounded-full border border-gray-200 dark:border-gray-700"
+                src={getAvatar(currentAccount)}
+              />
+            </button>
+          </>
         )}
       </div>
     </nav>

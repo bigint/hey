@@ -24,6 +24,9 @@ const Comment = ({ post, showCount }: CommentProps) => {
         aria-label="Comment"
         className="rounded-full p-1.5 outline-offset-2 hover:bg-gray-300/20"
         onClick={() => {
+          if (!post.slug) {
+            return;
+          }
           umami.track("open_post");
           navigate(`/posts/${post.slug}`);
         }}
